@@ -1,0 +1,30 @@
+{
+  "name": "capstone-hndathome",
+  "version": "1.0.0",
+  "description": "This Express web application allows you to enter multiple zip codes and returns COVID-19 statistics, links to state COVID-19 websites, and if available where to get COVID-19 testing. Find out COVID-19 facts where it matters to you, whether for travel or for family and friends living across the United States.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/uark-backend-class/capstone-hndathome.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/uark-backend-class/capstone-hndathome/issues"
+  },
+  "homepage": "https://github.com/uark-backend-class/capstone-hndathome#readme",
+  "dependencies": {
+    "axios": "^0.20.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.1.0",
+    "express-session": "^1.17.1",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "pg": "^8.4.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^6.3.5"
+  }
+}
