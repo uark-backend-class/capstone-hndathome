@@ -1,13 +1,18 @@
 //zip code
 //alias for zip code
 module.exports = (sequelize, Sequelize) => {
-    return sequelize.define('zipcode', {
+    return sequelize.define('zipCode', {
         id: {
             type: Sequelize.INTEGER,
             autoIncrement: true,
             primaryKey: true
         },
-        zipcode: sequelize.STRING,
-        alias: Sequelize.STRING
+        zip_code: Sequelize.STRING,
+        alias: Sequelize.STRING,
+        state_abbr: Sequelize.STRING,
+        state: Sequelize.STRING,
+        latitude: Sequelize.DECIMAL(8, 6),
+        longitude: Sequelize.DECIMAL(9, 6),
+        default_city: Sequelize.STRING,
     })
 }

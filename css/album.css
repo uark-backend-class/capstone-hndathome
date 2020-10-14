@@ -1,0 +1,121 @@
+:root {
+  --jumbotron-padding-y: 1rem;
+}
+
+.jumbotron {
+  padding-top: var(--jumbotron-padding-y);
+  padding-bottom: var(--jumbotron-padding-y);
+  margin-bottom: 0;
+  background-color: #fff;
+}
+@media (min-width: 768px) {
+  .jumbotron {
+    padding-top: calc(var(--jumbotron-padding-y) * 2);
+    padding-bottom: calc(var(--jumbotron-padding-y) * 2);
+  }
+}
+
+.jumbotron p:last-child {
+  margin-bottom: 0;
+}
+
+.jumbotron-heading {
+  font-weight: 300;
+}
+
+/* .jumbotron .container {
+  max-width: 40rem;
+} */
+
+footer {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+footer p {
+  margin-bottom: .25rem;
+}
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+
+body{
+  margin: 0;
+}
+
+.zipcode-form{
+padding-top: 1.5rem;
+}
+
+.card-body {
+  background-color: aliceblue;
+}
+
+.loading span {
+  color: #00b300;
+  font-size: 3em;
+  animation-name: blink;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+}
+
+.loading span:nth-child(2) {
+  animation-delay: .2s;
+}
+
+.loading span:nth-child(3) {
+  animation-delay: .4s;
+}
+
+@keyframes blink {
+  0% {
+    opacity: .2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .2;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading span {
+    animation: none; /* or define an alternate animation */
+  }
+}
+
+.addclickspin{
+  color: #00b300;
+}
+
+.addclickdefault{
+  color: unset;
+}
+
+.leaflet-container {
+  height: 400px;
+  width: 100%;
+}
+
+/*.my-zipcodes-body{
+<a href="https://www.vecteezy.com/free-vector/amoeba">Amoeba Vectors by Vecteezy</a>
+  background-image: url('../assets/mask-4964590_1280.png');
+  background-position: center; 
+  background-size: cover;
+}
+
+.attribution{
+  position:absolute;
+  bottom:0;
+  right:0;
+  font-size:0.5em
+}*/
+
+.bootstrap-primary{
+  color: #007bff; 
+}
+
+.VictoryContainer {
+  padding-left: 12px;
+}

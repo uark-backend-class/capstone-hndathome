@@ -1,16 +1,19 @@
+require('dotenv').config()
 const express = require('express');
 const hbs = require('express-handlebars');
+const routes = require('./routes');
 const session = require('express-session');
 const passport = require('passport');
 const configPassport = require('./passport.config');
-const routes = require('./routes');
 require('./db');
 
 configPassport(passport);
 
 const app = express();
 app.use(session({
-    secret: 'TODO'
+    secret: process.env.SESSION_SECRET,
+    resave: true,
+    saveUninitialized: true
 }));
 
 app.use(passport.initialize());

@@ -5,6 +5,7 @@ module.exports = (sequelize, Sequelize) => {
             autoIncrement: true,
             primaryKey: true
         },
-        email: Sequelize.STRING,
+        googleId: Sequelize.STRING,
+        displayName: Sequelize.STRING,
     })
 }

@@ -1,8 +1,8 @@
 const Sequelize = require('sequelize');
-const ZipCodeModel = require('./models/zipcode.model');
+const ZipCodeModel = require('./models/zipCode.model');
 const UserModel = require('./models/user.model');
 
-const sequelize = new Sequelize('where_covid19_matters', 'postgres', 'password', {
+const sequelize = new Sequelize('where_covid19_matters', 'postgres', process.env.POSTGRES_PASSWORD, {
     host: 'localhost',
     dialect: 'postgres'
 });
@@ -12,7 +12,7 @@ const User = UserModel(sequelize, Sequelize);
 
 // Relations / Associations
 User.hasMany(ZipCode);
-// Will add user id to zipcode
+// Will add user id to zipCode
 ZipCode.belongsTo(User);
 
 sequelize.sync().then(() => {

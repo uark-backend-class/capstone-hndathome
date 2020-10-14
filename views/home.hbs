@@ -1,0 +1,65 @@
+<main>
+  <div class="container">
+    <div class="row featurette first-featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">Where COVID-19 Matters</h2>
+        <p class="lead">This express/node.js web application allows you to enter multiple zip codes and
+          returns COVID-19 statistics, links to state COVID-19 websites, and if available where to get
+          COVID-19 testing. Find out COVID-19 facts where it matters to you, whether for travel or for family
+          and friends living across the United States.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Enter zip codes &raquo;</a></p>
+      </div>
+      {{!-- <div class="col-md-5">
+              {Object.keys(currentUSValues).length === 0 &&
+                <h4 class="loading">Loading<span>.</span><span>.</span><span>.</span></h4>
+              }
+              {Object.keys(currentUSValues).length > 0 &&
+                <>
+                  <h4>Current US Numbers<span style={{ float: "right", fontSize: ".8rem" }}>Last update: {lastUpdateET}</span></h4>
+                  <div class="table-responsive">
+                    <Table currentValues={currentUSValues} caption="The most recent COVID data for the US. The most recent data may not be from today." />
+                  </div>
+                </>
+              }
+            </div> --}}
+    </div>
+    <hr class="featurette-divider">
+    </hr>
+    <div class="row">
+      <div class="col-md-4">
+        <h2>Heading</h2>
+        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
+          mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
+          mollis euismod. Donec sed odio dui. </p>
+      </div>
+      {{!-- <div class="col-md-4">
+              <h2>US Positives</h2>
+              {historicUSValues.length === 0 &&
+                <h2 class="loading" style={{ textAlign: "center" }}>Loading<span>.</span><span>.</span><span>.</span></h2>
+              }
+              {historicUSValues.length > 0 &&
+                <>
+                  <Chart series={[historicUSValues]} seriesNames={[{
+                    "name": `Positives`
+                  }]} xValue="date" yValue="positive" />
+                  <p>Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
+                </>
+              }
+            </div>
+            <div class="col-md-4">
+              <h2>US Deaths</h2>
+              {historicUSValues.length === 0 &&
+                <h2 class="loading" style={{ textAlign: "center" }}>Loading<span>.</span><span>.</span><span>.</span></h2>
+              }
+              {historicUSValues.length > 0 &&
+                <>
+                  <Chart series={[historicUSValues]} seriesNames={[{
+                    "name": `Deaths`
+                  }]} xValue="date" yValue="death" />
+                  <p>Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
+                </>
+              }
+            </div> --}}
+    </div>
+  </div>
+</main>
