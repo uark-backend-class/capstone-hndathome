@@ -4,29 +4,31 @@ let User = require('./db').User;
 
 module.exports = (passport) => {
     passport.serializeUser((user, done) => {
-        done(null, user);
+        done(null, user.id);
     });
 
-    passport.deserializeUser((user, done) => {
-        done(null, user);
+    passport.deserializeUser((id, done) => {
+        //done(null, user);
+        User.findOne({ where: { id: id } })
+            .then((user) => { done(null, user); })
+            .catch((err) => { done(err, null); });
     });
 
     passport.use(
         new GoogleStrategy(
             {
-
                 clientID: process.env.GOOGLE_CLIENT_ID,
                 clientSecret: process.env.GOOGLE_CLIENT_SECRET,
                 callbackURL: '/login/callback',
             },
             async function (accessToken, refreshToken, profile, cb) {
-                let existingUser = await User.findOne({ where: { googleId: profile.id } });
+                let existingUser = await User.findOne({ where: { google_id: profile.id } });
 
                 if (existingUser) {
                     cb(null, existingUser);
                 }
                 else {
-                    let newUser = await User.create({ googleId: profile.id, displayName: profile.displayName });
+                    let newUser = await User.create({ google_id: profile.id, display_name: profile.displayName });
                     cb(null, newUser);
                 }
             }

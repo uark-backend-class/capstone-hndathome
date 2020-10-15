@@ -1,47 +1,25 @@
-<div class="container zipcode-form">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <h5 class="card-header">My Zip Codes</h5>
-                <ul class="list-group list-group-flush">
-                    {{!-- {myZipCodes.length === 0 && <li class="list-group-item"><strong>Empty list, enter at least one
-                            zip code.</strong></li>}
-                    {myZipCodes.length > 0 && myZipCodes.map(zip =>
-                    <ZipCode zipcode={zip} key={zip.id} handleDelete={handleDelete} />)} --}}
-                    <li class="list-group-item">
-                        <form action="/update" method="POST">
-                            <div class="form-row ">
-                                <div class="input-group">
-                                    <label class="sr-only" htmlFor="zipCode">Zip code</label>
-                                    <input class="form-control" name="zipCode" type="text" placeholder={"Zip code"}
-                                        value={zipCode} minLength={5} maxLength={5} onChange={e=>
-                                    setZipCode(e.target.value)}
-                                    aria-label="zip code"
-                                    />
-                                    <div class="input-group-append">
-                                        <button type="submit" class="btn btn-outline-secondary" data-toggle="tooltip"
-                                            data-placement="top" title="add zip code">
-                                            <FontAwesomeIcon class={addingZip ? "addclickspin" : "addclickdefault" }
-                                                icon={addingZip ? faSpinner : faPlus}
-                                                aria-label="add zip code to list" /></button>
-                                    </div>
-                                </div>
-                            </div>
-                            <br />
-                            <div>
-                                <button class="btn btn-primary" disabled={myZipCodes.length> 0 ? false : true}
-                                    onClick={handleGetData}>Get data</button>
-                                <button style={{ float: "right" }} disabled={myZipCodes.length> 0 ? false : true}
-                                    class="btn btn-danger" data-toggle="tooltip" data-placement="top" title="delete
-                                    all zip codes" onClick={(e) => window.confirm("Are you sure you wish to delete all
-                                    zip codes?") ? handleDeleteAll(e) : e.preventDefault()}
-                                    >
-                                    <FontAwesomeIcon icon={faTrashAlt} aria-label="delete all zip codes" /></button>
-                            </div>
-                        </form>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-</div>
+<a href="/add" class="btn btn-primary">Add Zip Code</a>
+<br />
+<br />
+<h1>Zip Codes</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Zip Code</th>
+            <th>Alias</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each locations}}
+        <tr>
+            <td>{{this.zip_code}}</td>
+            <td>{{this.alias}}</td>
+            <td>
+                <a href="/edit/{{this.id}}" class="btn btn-secondary">Edit</a>
+                <a href="/delete/{{this.id}}" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

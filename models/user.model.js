@@ -5,7 +5,7 @@ module.exports = (sequelize, Sequelize) => {
             autoIncrement: true,
             primaryKey: true
         },
-        googleId: Sequelize.STRING,
-        displayName: Sequelize.STRING,
+        google_id: Sequelize.STRING,
+        display_name: Sequelize.STRING,
     })
 }
