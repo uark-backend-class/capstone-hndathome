@@ -3,22 +3,35 @@
 //`https://api.covidtracking.com/v1/states/info.json` all states info
 const axios = require('axios');
 
+let historicUSData;
+let historicStatesData;
+let StatesInfo;
+
 async function getHistoricUSData() {
-    const url = `https://api.covidtracking.com/v1/us/daily.json`;
-    const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
-    return response.data;
+    if (!historicUSData) {
+        const url = `https://api.covidtracking.com/v1/us/daily.json`;
+        const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
+        historicUSData = response.data;
+    }
+    return historicUSData;
 }
 
 async function getHistoricStatesData() {
-    const url = `https://api.covidtracking.com/v1/states/daily.json`;
-    const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
-    return response.data;
+    if (!historicStatesData) {
+        const url = `https://api.covidtracking.com/v1/states/daily.json`;
+        const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
+        historicStatesData = response.data;
+    }
+    return historicStatesData;
 }
 
 async function getStatesInfo() {
-    const url = `https://api.covidtracking.com/v1/states/info.json`;
-    const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
-    return response.data;
+    if (!StatesInfo) {
+        const url = `https://api.covidtracking.com/v1/states/info.json`;
+        const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
+        StatesInfo = response.data;
+    }
+    return StatesInfo;
 }
 
 module.exports = {
