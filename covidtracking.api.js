@@ -7,29 +7,42 @@ let historicUSData;
 let historicStatesData;
 let StatesInfo;
 
+// also check timestamp?
 async function getHistoricUSData() {
-    if (!historicUSData) {
-        const url = `https://api.covidtracking.com/v1/us/daily.json`;
-        const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
-        historicUSData = response.data;
+    try {
+        if (!historicUSData) {
+            const url = `https://api.covidtracking.com/v1/us/daily.json`;
+            const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
+            historicUSData = response.data;
+        }
+    } catch (error) {
+        console.error(error);
     }
     return historicUSData;
 }
 
 async function getHistoricStatesData() {
-    if (!historicStatesData) {
-        const url = `https://api.covidtracking.com/v1/states/daily.json`;
-        const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
-        historicStatesData = response.data;
+    try {
+        if (!historicStatesData) {
+            const url = `https://api.covidtracking.com/v1/states/daily.json`;
+            const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
+            historicStatesData = response.data;
+        }
+    } catch (error) {
+        console.error(error);
     }
     return historicStatesData;
 }
 
 async function getStatesInfo() {
-    if (!StatesInfo) {
-        const url = `https://api.covidtracking.com/v1/states/info.json`;
-        const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
-        StatesInfo = response.data;
+    try {
+        if (!StatesInfo) {
+            const url = `https://api.covidtracking.com/v1/states/info.json`;
+            const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
+            StatesInfo = response.data;
+        }
+    } catch (error) {
+        console.error(error);
     }
     return StatesInfo;
 }
