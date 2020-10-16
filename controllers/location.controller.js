@@ -8,8 +8,8 @@ exports.getAll = async (req, res) => {
 
 exports.update = async (req, res) => {
     //valid format
-    if (req.body.zip_code && (/^\d{5}$/.test(req.body.zip_code))) {
-        let callSmartyStreets = false;
+    if (req.body.zip_code && /^\d{5}$/.test(req.body.zip_code)) {
+        let useSmartyStreets = false;
 
         //does location already exists
         let location = await req.user.getLocations({ where: { zip_code: req.body.zip_code }, raw: true });
@@ -30,17 +30,17 @@ exports.update = async (req, res) => {
                 else {
                     //if zip code has changed to a new zip code call smarty streets
                     if (req.body.zip_code !== req.body.pg_zip_code) {
-                        callSmartyStreets = true;
+                        useSmartyStreets = true;
                     }
                 }
             }
         }
         else {
-            callSmartyStreets = true;
+            useSmartyStreets = true;
         }
 
         let zipCode;
-        if (callSmartyStreets) {
+        if (useSmartyStreets) {
             zipCode = await smartyStreets.lookupZipCode(req.body.zip_code);
 
             if (zipCode.zipcodes === undefined) {

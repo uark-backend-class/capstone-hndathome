@@ -21,7 +21,7 @@ app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
 app.engine('hbs', hbs({ extname: 'hbs' }));
 app.set('view engine', 'hbs');
-
+app.use(express.static('public'));
 app.use(routes);
 
 app.listen(3000, () => {

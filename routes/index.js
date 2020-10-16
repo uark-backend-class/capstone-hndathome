@@ -9,8 +9,8 @@ router.get('/login', passport.authenticate('google', { scope: ["profile", "email
 router.get('/login/callback', passport.authenticate('google'), (req, res) => { res.redirect('/'); });
 
 router.use(isAuthenticated);
-//router.get('/', homeController.render);
-router.get('/', locationController.getAll);
+router.get('/', homeController.render);
+//router.get('/', locationController.getAll);
 router.get('/add', (req, res) => { res.render('add-edit') });
 router.get('/edit/:id', locationController.editView);
 router.get('/delete/:id', locationController.delete);

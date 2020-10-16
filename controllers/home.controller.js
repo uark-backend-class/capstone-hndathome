@@ -1,4 +1,3 @@
-const { User } = require('../db');
 const covidtracking = require('../covidtracking.api')
 
 exports.render = async (req, res) => {
