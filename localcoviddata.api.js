@@ -3,11 +3,13 @@ const axios = require('axios');
 
 let lastZipCode;
 let localCovidData;
+let lastDay;
 
-// also check timestamp?
 async function getLocalCovidData(zipCode) {
+    let today = new Date();
+    today.setHours(0, 0, 0, 0);
     try {
-        if (zipCode != lastZipCode || localCovidData === undefined) {
+        if (zipCode != lastZipCode || localCovidData === undefined || lastDay === undefined || today != lastDay) {
             const url = `https://localcoviddata.com/covid19/v1/cases/newYorkTimes?zipCode=${zipCode}&daysInPast=7`;
             const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
             localCovidData = response.data;
@@ -16,6 +18,7 @@ async function getLocalCovidData(zipCode) {
         localCovidData = undefined;
         console.error(error);
     }
+    lastDay = today;
     lastZipCode = zipCode;
     return localCovidData;
 }

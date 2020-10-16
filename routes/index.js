@@ -4,13 +4,15 @@ const homeController = require('../controllers/home.controller');
 const passport = require('passport');
 const isAuthenticated = require('../middleware/is-authenticated');
 
-
 router.get('/login', passport.authenticate('google', { scope: ["profile", "email"] }));
-router.get('/login/callback', passport.authenticate('google'), (req, res) => { res.redirect('/'); });
+router.get('/login/callback', passport.authenticate('google'), (req, res) => {
+    res.redirect(req.session.returnTo || '/');
+    delete req.session.returnTo;
+});
 
-router.use(isAuthenticated);
 router.get('/', homeController.render);
-//router.get('/', locationController.getAll);
+router.use(isAuthenticated);
+router.get('/list', locationController.getAll);
 router.get('/add', (req, res) => { res.render('add-edit') });
 router.get('/edit/:id', locationController.editView);
 router.get('/delete/:id', locationController.delete);

@@ -59,7 +59,7 @@ exports.update = async (req, res) => {
 
         req.body.userId = req.user.id;
         await Location.upsert(req.body);
-        return res.redirect('/');
+        return res.redirect('/list');
     }
     else {
         location = { ...req.body, validationError: "ERROR: Zip code is not a 5 digit number." };
@@ -77,5 +77,5 @@ exports.delete = async (req, res) => {
     // or
     // let location = await Location.findByPk(req.params.id, { raw: true });
     // await location.destroy();
-    res.redirect('/');
+    res.redirect('/list');
 }
