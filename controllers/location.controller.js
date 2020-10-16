@@ -75,7 +75,7 @@ exports.editView = async (req, res) => {
 exports.delete = async (req, res) => {
     await Location.destroy({ where: { id: req.params.id } });
     // or
-    // let location = await Locatio.findByPk(req.params.id, { raw: true });
+    // let location = await Location.findByPk(req.params.id, { raw: true });
     // await location.destroy();
     res.redirect('/');
 }
