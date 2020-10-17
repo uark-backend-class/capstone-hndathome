@@ -35,10 +35,6 @@ module.exports = {
         let str = lineChart.createSVG();
         return str;
     },
-    createUniqueId: function (name, number) {
-        let str = `${name}${number}`;
-        return str;
-    },
     getTwitter: function (str) {
         let twitterLink = "";
         if (str.startsWith('@')) {
