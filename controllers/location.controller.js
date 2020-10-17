@@ -51,7 +51,7 @@ exports.update = async (req, res) => {
             else {
                 req.body.state_abbr = zipCode.zipcodes[0].state_abbreviation;
                 req.body.state = zipCode.zipcodes[0].state;
-                req.body.latitude = zipCode.zipcodes[0].longitude;
+                req.body.latitude = zipCode.zipcodes[0].latitude;
                 req.body.longitude = zipCode.zipcodes[0].longitude;
                 req.body.default_city = zipCode.zipcodes[0].default_city;
             }
