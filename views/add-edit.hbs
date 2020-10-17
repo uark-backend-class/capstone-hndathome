@@ -16,9 +16,9 @@
                     </div>
                 </div>
             </h5>
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item">
-                    <form action="/update" method="POST">
+            <form action="/update" method="POST">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">
                         <div class="row">
                             <div class="col-6">
                                 <input type="text" class="form-control" placeholder="Zip Code" name="zip_code"
@@ -31,16 +31,16 @@
                         </div>
                         <input type="hidden" name="id" value="{{location.id}}" />
                         <input type="hidden" name="pg_zip_code" value="{{location.zip_code}}" />
-                    </form>
-                </li>
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-12">
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="row">
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </form>
             {{#if location.validationError}}
             <p><strong>{{location.validationError}}</strong></p>
             {{/if}}
