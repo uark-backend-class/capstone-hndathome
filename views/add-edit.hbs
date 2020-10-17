@@ -3,15 +3,47 @@
 {{else}}
 <h1>Add Zip Code</h1>
 {{/if}}
-<form action="/update" method="POST">
-    Zip Code <input class="form-control" type="text" name="zip_code" minlength="5" maxlength="5" pattern="^\d{5}$"
-        value="{{location.zip_code}}" />
-    Alias <input class="form-control" type="text" name="alias" value="{{location.alias}}" />
-    <input type="hidden" name="id" value="{{location.id}}" />
-    <input type="hidden" name="pg_zip_code" value="{{location.zip_code}}" />
-    <br />
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-{{#if location.validationError}}
-<p><strong>{{location.validationError}}</strong></p>
-{{/if}}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <h5 class="card-header">
+                <div class="row">
+                    <div class="col-6">
+                        Zip Code
+                    </div>
+                    <div class="col-6">
+                        Alias
+                    </div>
+                </div>
+            </h5>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    <form action="/update" method="POST">
+                        <div class="row">
+                            <div class="col-6">
+                                <input type="text" class="form-control" placeholder="Zip Code" name="zip_code"
+                                    minlength="5" maxlength="5" pattern="^\d{5}$" value="{{location.zip_code}}" />
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control" placeholder="Alias" name="alias"
+                                    value="{{location.alias}}" />
+                            </div>
+                        </div>
+                        <input type="hidden" name="id" value="{{location.id}}" />
+                        <input type="hidden" name="pg_zip_code" value="{{location.zip_code}}" />
+                    </form>
+                </li>
+                <li class="list-group-item">
+                    <div class="row">
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            {{#if location.validationError}}
+            <p><strong>{{location.validationError}}</strong></p>
+            {{/if}}
+        </div>
+    </div>
+</div>
