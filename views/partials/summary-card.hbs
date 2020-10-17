@@ -1,30 +1,26 @@
 <div class="col-md-4">
     <div class="card mb-4 shadow-sm">
         <div width="100%" height="225" class="bd-placeholder-img card-img-top">
-            {/* */}
-            <div id={`myCarousel${zipcode}`} class="carousel slide" data-ride="carousel" style={{ marginBottom: 0 }}>
+            {{!-- {`myCarousel${zipcode}`} {`#myCarousel${zipcode}`}{`#myCarousel${zipcode}`}--}}
+            <div id={{createUniqueId "myCarousel" location.zip_code}} class="carousel slide" data-ride="carousel"
+                style="margin-bottom: 0" data-interval="false">
                 <ol class="carousel-indicators">
-                    <li style={{ backgroundColor: "#007bff" }} data-target={`#myCarousel${zipcode}`} data-slide-to="0"
-                        class="active"></li>
-                    <li id={`listItemMap${zipcode}`} style={{ backgroundColor: "#007bff" }}
-                        data-target={`#myCarousel${zipcode}`} data-slide-to="1"></li>
-                    <li style={{ backgroundColor: "#007bff" }} data-target={`#myCarousel${zipcode}`} data-slide-to="2">
+                    <li style="background-color: #007bff;"
+                        data-target={{createUniqueId "#myCarousel" location.zip_code}} data-slide-to="0" class="active">
+                    </li>
+                    </li>
+                    <li id={{createUniqueId "listItemMap" location.zip_code}} style="background-color: #007bff;"
+                        data-target={{createUniqueId "#myCarousel" location.zip_code}} data-slide-to="1">
+                    </li>
+                    <li style="background-color: #007bff;"
+                        data-target={{createUniqueId "#myCarousel" location.zip_code}} data-slide-to="2">
                     </li>
                 </ol>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <Chart data={nytData} />
-                        {/*<div class="container">
-                            <div class="carousel-caption text-left">
-                                <h1>Example headline.</h1>
-                                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi
-                                    porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.
-                                </p>
-                                <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
-                            </div>
-                        </div>*/}
+                        {{{graphics}}}
                     </div>
-                    <div class="carousel-item">
+                    {{!-- <div class="carousel-item">
                         {typeof window !== 'undefined' &&
                         <LeafletMap position={[item.latitude, item.longitude]} zoom={9} markers={markers}
                             key={keyMap} />
@@ -35,7 +31,7 @@
                                 <p>Covid-19 Testing Locations</p>
                             </div>
                         </div> */}
-                    </div>
+                    </div> --}}
 
                     <div class="carousel-item">
                         <img class="third-slide"
@@ -43,14 +39,16 @@
                             alt="Third slide" />
                         <div class="container">
                             <div class="carousel-caption">
-                                <p>{geoState} Department of Health</p>
+                                <p>{{location.state}} Department of Health</p>
                                 <ul>
-                                    <li><a class="covid19-links" href={covid19Site}>Covid19 Site</a></li>
-                                    <li><a class="covid19-links" href={covid19SiteSecondary}>Covid19 Secondary
+                                    <li><a class="covid19-links" href={{location.statesInfo.covid19Site}}>Covid19
                                             Site</a></li>
-                                    {twitter.startsWith('@') && <li><a class="covid19-links"
+                                    <li><a class="covid19-links"
+                                            href={{location.statesInfo.covid19SiteSecondary}}>Covid19 Secondary
+                                            Site</a></li>
+                                    {{!-- {twitter.startsWith('@') && <li><a class="covid19-links"
                                             href={`https://twitter.com/${twitter.slice(1)}`}>
-                                            <FontAwesomeIcon icon={faTwitter} aria-label="go to twitter" /></a></li>}
+                                            <FontAwesomeIcon icon={faTwitter} aria-label="go to twitter" /></a></li>} --}}
                                 </ul>
                             </div>
                         </div>
@@ -59,21 +57,13 @@
             </div>
         </div>
         <div class="card-body">
-            <h5 class="card-text">{zipcode}</h5>
+            <h5 class="card-text">{{location.alias}}</h5>
             <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                    <button class="btn btn-sm btn-secondary" onClick={event=> {
-                        event.preventDefault();
-                        const updatedItem = { ...item, county_info: nytData, markers: markers, hereData: hereData };
-                        navigate(
-                        `/details/${zipcode}`,
-                        {
-                        state: { updatedItem: updatedItem },
-                        }
-                        )
-                        }}>View details</button>
+                    {{!-- <button class="btn btn-sm btn-secondary">View details</button> --}}
                 </div>
-                <small class="text-muted">{lastUpdated}</small>
+                <small class="text-muted"></small>
             </div>
         </div>
     </div>
+</div>

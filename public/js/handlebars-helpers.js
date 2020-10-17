@@ -34,5 +34,9 @@ module.exports = {
     graphics: function () {
         let str = lineChart.createSVG();
         return str;
-    }
+    },
+    createUniqueId: function (name, number) {
+        let str = `${name}${number}`;
+        return str;
+    },
 }

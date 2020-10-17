@@ -17,12 +17,8 @@
         <div class="container">
             <div class="row">
                 {{#each locations}}
-                <p>{{this.zip_code}}</p>
-                {{!-- {{>summary-card location=this}} --}}
+                {{>summary-card location=this}}
                 {{/each}}
-            </div>
-            <div id="1">
-                {{{graphics}}}
             </div>
         </div>
     </div>

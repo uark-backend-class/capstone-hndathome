@@ -16,6 +16,41 @@ function createSVG() {
         .attr("viewBox", "0 0 400 400")
         .attr("style", "width: 100%;height: 100%;")
 
+    // const width = 400;
+    // const height = 400;
+    // const margin = 5;
+    // const padding = 5;
+    // const adj = 30;
+    // // we are appending SVG first
+    // const svg = body.append('div').attr('class', 'container').append("svg")
+    //     .attr("preserveAspectRatio", "xMinYMin meet")
+    //     .attr("viewBox", "-"
+    //         + adj + " -"
+    //         + adj + " "
+    //         + (width + adj * 3) + " "
+    //         + (height + adj * 3))
+    //     .style("padding", padding)
+    //     .style("margin", margin)
+    //     .classed("svg-content", true);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // Draw a line
     let circle = svgContainer.append("line")
         .attr("x1", 5)
