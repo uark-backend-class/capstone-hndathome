@@ -39,4 +39,13 @@ module.exports = {
         let str = `${name}${number}`;
         return str;
     },
+    getTwitter: function (str) {
+        let twitterLink = "";
+        if (str.startsWith('@')) {
+            twitterLink = `<li><a class="covid19-links"
+            href=https://twitter.com/${str.slice(1)}>
+            <i class="fa fw fa-twitter" aria-label="go to twitter"></i></a></li>`
+        }
+        return twitterLink;
+    }
 }
