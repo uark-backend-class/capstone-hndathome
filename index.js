@@ -8,6 +8,7 @@ const configPassport = require('./passport.config');
 require('./db');
 
 configPassport(passport);
+const errorHandler = require('errorhandler');
 
 const app = express();
 app.use(session({
@@ -57,6 +58,11 @@ app.engine('hbs', hbs({
 app.set('view engine', 'hbs');
 app.use(express.static('public'));
 app.use(routes);
+app.use(errorHandler({ log: errorNotification }));
+
+function errorNotification(err, str, req) {
+    console.log('ERROR', err);
+}
 
 app.listen(3000, () => {
     console.log(`Where Covid-19 Matters running on port 3000`);
