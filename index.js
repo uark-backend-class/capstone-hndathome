@@ -8,7 +8,9 @@ const configPassport = require('./passport.config');
 require('./db');
 
 configPassport(passport);
+
 const errorHandler = require('errorhandler');
+const lineChart = require('./line-chart');
 
 const app = express();
 app.use(session({
@@ -20,16 +22,17 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(express.urlencoded({ extended: true }));
+
 app.engine('hbs', hbs({
     extname: 'hbs',
     helpers: {
-        getPrettyNumber(number) {
+        getPrettyNumber: function (number) {
             if (number === null) {
                 return "no data is available"
             }
             return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         },
-        getUpDown(number) {
+        getUpDown: function (number) {
             let str = "";
             if (number) {
                 if (number > 0) {
@@ -41,7 +44,7 @@ app.engine('hbs', hbs({
             }
             return str;
         },
-        getPlusMinus(number) {
+        getPlusMinus: function (number) {
             let str = "";
             if (number) {
                 if (number > 0) {
@@ -51,6 +54,10 @@ app.engine('hbs', hbs({
                     str = `<i class="fa fw fa-minus increase"></i>`
                 }
             }
+            return str;
+        },
+        graphics: function () {
+            let str = lineChart.createSVG();
             return str;
         }
     }
