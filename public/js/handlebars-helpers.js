@@ -61,11 +61,11 @@ module.exports = {
 
         ${location.hereData.reduce((markers, marker) => {
                 return `${markers} 
-        L.marker([${marker.latitude}, ${marker.longitude}]).addTo(map${location.zip_code})`
+        L.marker([${marker.latitude}, ${marker.longitude}]).addTo(map${location.zip_code})
+        .bindPopup("${marker.markerText}<br />${marker.address.houseNumber && marker.address.houseNumber} ${marker.address.street}<br/>${marker.address.city}, ${marker.address.stateCode} ${marker.address.postalCode}<br /><a href='tel:${marker.phone}'>${marker.formatPhone}</a>");`
             }, '')}
         `
         }, '')
-
         let jqueryString = locations.reduce((accumulator, location) => {
             return `${accumulator}
             $('#myCarousel${location.zip_code}').on('slid.bs.carousel', function () {

@@ -54,3 +54,7 @@ path.line-4 {
     font-family: Georgia;
     font-size: 80%;
 }
+
+.leaflet-popup-content{
+    white-space: nowrap;
+}
