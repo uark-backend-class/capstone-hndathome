@@ -2,63 +2,137 @@ const d3 = require('d3');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
-function createSVG() {
+function createSVG(series) {
     const fakeDom = new JSDOM('<!DOCTYPE html><html><body></body></html>');
 
     let body = d3.select(fakeDom.window.document).select('body');
+    //------------------------1. PREPARATION------------------------//
+    //-----------------------------SVG------------------------------// 
+    const width = 960;
+    const height = 500;
+    const margin = 5;
+    const padding = 5;
+    const adj = 30;
+    // we are appending SVG first
+    const svg = body.append('div').attr('class', 'container').append("svg")
+        .attr("preserveAspectRatio", "xMinYMin meet")
+        .attr("viewBox", "-"
+            + adj + " -"
+            + adj + " "
+            + (width + adj * 3) + " "
+            + (height + adj * 3))
+        .style("padding", padding)
+        .style("margin", margin)
+        .classed("svg-content", true);
+
+    //-----------------------------DATA-----------------------------//
+    const timeConv = d3.timeParse("%Y-%m-%d");
+
+    let slices = series.reduce((accumulator, current) => {
+        var tempCurrent = Object.assign({}, current)
+        var tempValues = current.values.map(obj => {
+            var temp = Object.assign({}, obj);
+            temp.date = timeConv(obj.date)
+            return temp;
+
+        })
+        tempCurrent.values = tempValues;
+        return [...accumulator, tempCurrent];
+    }, []);
+
+    //----------------------------SCALES----------------------------//
+    const xScale = d3.scaleTime().range([0, width]);
+    const yScale = d3.scaleLinear().rangeRound([height, 0]);
+    // xScale.domain(d3.extent(data, function (d) {
+    //     return timeConv(d.date)
+    // }));
+    xScale.domain(d3.extent(slices[0].values, function (d) {
+        return d.date
+    }));
+    yScale.domain([(0), d3.max(slices, function (c) {
+        return d3.max(c.values, function (d) {
+            return d.positiveCt + 4;
+        });
+    })
+    ]);
+
+    //-----------------------------AXES-----------------------------//
+    const yaxis = d3.axisRight()
+        .ticks((slices[0].values).length)
+        .scale(yScale);
+
+    const xaxis = d3.axisBottom()
+        .ticks(d3.timeDay.every(1))
+        .tickFormat(d3.timeFormat('%b %d'))
+        .scale(xScale);
+
+    //----------------------------LINES-----------------------------//
+    const line = d3.line()
+        .x(function (d) { return xScale(d.date); })
+        .y(function (d) { return yScale(d.positiveCt); });
+
+    let id = 0;
+    const ids = function () {
+        return "line-" + id++;
+    }
+    //-------------------------2. DRAWING---------------------------//
+    //-----------------------------AXES-----------------------------//
+    svg.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xaxis);
+
+    svg.append("g")
+        .attr("class", "axis")
+        .call(yaxis)
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("dy", ".75em")
+        .attr("y", 6)
+        .style("text-anchor", "end")
+
+    //----------------------------LINES-----------------------------//
+    const lines = svg.selectAll("lines")
+        .data(slices)
+        .enter()
+        .append("g");
+
+    lines.append("path")
+        .attr("class", ids)
+        .attr("d", function (d) { return line(d.values); });
+
+    lines.append("text")
+        .attr("class", "serie_label")
+        .datum(function (d) {
+            return {
+                id: d.id,
+                value: d.values[d.values.length - 1]
+            };
+        })
+        .attr("transform", function (d) {
+            return "translate(" + (xScale(d.value.date) + 10)
+                + "," + (yScale(d.value.positiveCt) + 5) + ")";
+        })
+        .attr("x", 5)
+        .text(function (d) { return ("Serie ") + d.id; });
 
     // Make an SVG Container
-    let svgContainer = body.append('div').attr('class', 'container')
-        .append("svg")
-        .attr("width", 400)
-        .attr("height", 400)
-        .attr("role", "img")
-        .attr("viewBox", "0 0 400 400")
-        .attr("style", "width: 100%;height: 100%;")
-
-    // const width = 400;
-    // const height = 400;
-    // const margin = 5;
-    // const padding = 5;
-    // const adj = 30;
-    // // we are appending SVG first
-    // const svg = body.append('div').attr('class', 'container').append("svg")
-    //     .attr("preserveAspectRatio", "xMinYMin meet")
-    //     .attr("viewBox", "-"
-    //         + adj + " -"
-    //         + adj + " "
-    //         + (width + adj * 3) + " "
-    //         + (height + adj * 3))
-    //     .style("padding", padding)
-    //     .style("margin", margin)
-    //     .classed("svg-content", true);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    // let svgContainer = body.append('div').attr('class', 'container')
+    //     .append("svg")
+    //     .attr("width", 400)
+    //     .attr("height", 400)
+    //     .attr("role", "img")
+    //     .attr("viewBox", "0 0 400 400")
+    //     .attr("style", "width: 100%;height: 100%;")
 
     // Draw a line
-    let circle = svgContainer.append("line")
-        .attr("x1", 5)
-        .attr("y1", 5)
-        .attr("x2", 500)
-        .attr("y2", 500)
-        .attr("stroke-width", 2)
-        .attr("stroke", "black");
+    // let circle = svgContainer.append("line")
+    //     .attr("x1", 5)
+    //     .attr("y1", 5)
+    //     .attr("x2", 500)
+    //     .attr("y2", 500)
+    //     .attr("stroke-width", 2)
+    //     .attr("stroke", "black");
 
     return body.select('.container').html();
 }

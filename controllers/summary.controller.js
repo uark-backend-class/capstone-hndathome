@@ -20,16 +20,6 @@ exports.render = async (req, res) => {
                 return [...accumulator, { id: current.countyName, values: current.historicData.sort((a, b) => a.date.localeCompare(b.date)) }]
             }, [])
 
-            console.log(series)
-
-            // console.log(counties.reduce((accumulator, current) => {
-            //     return [...accumulator, current.historicData.sort((a, b) => a.date.localeCompare(b.date)).map(obj => {
-            //         var temp = Object.assign({}, obj);
-            //         temp.date = `${obj.date.slice(5)}-${obj.date.slice(0, 4)}`
-            //         return temp;
-            //     })];
-            // }, []))
-
             return { ...location, hereData: hereData, localCovidData: series, statesInfo: statesInfo.find(({ state }) => state === location.state_abbr), }
         })
     )
