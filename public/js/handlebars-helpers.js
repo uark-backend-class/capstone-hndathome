@@ -31,8 +31,8 @@ module.exports = {
         }
         return str;
     },
-    graphics: function (series) {
-        let str = lineChart.createSVG(series);
+    graphics: function (series, yValue) {
+        let str = lineChart.createSVG(series, yValue);
         return str;
     },
     getTwitter: function (str) {

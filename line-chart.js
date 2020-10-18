@@ -2,7 +2,7 @@ const d3 = require('d3');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
-function createSVG(series) {
+function createSVG(series, yValue) {
     const fakeDom = new JSDOM('<!DOCTYPE html><html><body></body></html>');
 
     let body = d3.select(fakeDom.window.document).select('body');
@@ -25,8 +25,8 @@ function createSVG(series) {
         .style("margin", margin)
         .classed("svg-content", true);
 
-    //-----------------------------DATA-----------------------------//
-    const timeConv = d3.timeParse("%Y-%m-%d");
+    //-----------------------------DATA-----------------------------//    
+    const timeConv = (series[0].values).length > 7 ? d3.timeParse("%Y%m%d") : d3.timeParse("%Y-%m-%d");
 
     let slices = series.reduce((accumulator, current) => {
         var tempCurrent = Object.assign({}, current)
@@ -51,25 +51,27 @@ function createSVG(series) {
     }));
     yScale.domain([(0), d3.max(slices, function (c) {
         return d3.max(c.values, function (d) {
-            return d.positiveCt + 4;
+            return d[yValue] + 4;
         });
     })
     ]);
 
     //-----------------------------AXES-----------------------------//
+    const yTickCount = (slices[0].values).length > 7 ? 20 : (slices[0].values).length
+    const xInterval = (slices[0].values).length > 7 ? d3.timeMonth.every(2) : d3.timeDay.every(1)
     const yaxis = d3.axisRight()
-        .ticks((slices[0].values).length)
+        .ticks(yTickCount)
         .scale(yScale);
 
     const xaxis = d3.axisBottom()
-        .ticks(d3.timeDay.every(1))
+        .ticks(xInterval)
         .tickFormat(d3.timeFormat('%b %d'))
         .scale(xScale);
 
     //----------------------------LINES-----------------------------//
     const line = d3.line()
         .x(function (d) { return xScale(d.date); })
-        .y(function (d) { return yScale(d.positiveCt); });
+        .y(function (d) { return yScale(d[yValue]); });
 
     let id = 0;
     const ids = function () {
@@ -111,11 +113,16 @@ function createSVG(series) {
         })
         .attr("transform", function (d) {
             return "translate(" + (xScale(d.value.date) + 10)
-                + "," + (yScale(d.value.positiveCt) + 5) + ")";
+                + "," + (yScale(d.value[yValue]) + 5) + ")";
         })
         .style("font-weight", "bolder")
         .attr("x", -200)
-        .text(function (d) { return d.id; });
+        .text(function (d) {
+            if ((slices[0].values).length > 7)
+                return `${d.id} ${yValue[0].toUpperCase()}${yValue.slice(1)}s`
+            else
+                return d.id;
+        });
 
     // Make an SVG Container
     // let svgContainer = body.append('div').attr('class', 'container')

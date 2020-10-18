@@ -37,8 +37,8 @@
           mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
           mollis euismod. Donec sed odio dui. </p>
       </div>
-      {{!-- <div class="col-md-4">
-              <h2>US Positives</h2>
+      <div class="col-md-4">
+        {{!-- <h2>US Positives</h2>
               {historicUSValues.length === 0 &&
                 <h2 class="loading" style={{ textAlign: "center" }}>Loading<span>.</span><span>.</span><span>.</span></h2>
               }
@@ -47,12 +47,14 @@
                   <Chart series={[historicUSValues]} seriesNames={[{
                     "name": `Positives`
                   }]} xValue="date" yValue="positive" />
-                  <p>Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
+                  
                 </>
-              }
-            </div>
-            <div class="col-md-4">
-              <h2>US Deaths</h2>
+              } --}}
+        {{{graphics data.series "positive"}}}
+        <p>Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
+      </div>
+      <div class="col-md-4">
+        {{!--<h2>US Deaths</h2>
               {historicUSValues.length === 0 &&
                 <h2 class="loading" style={{ textAlign: "center" }}>Loading<span>.</span><span>.</span><span>.</span></h2>
               }
@@ -63,8 +65,10 @@
                   }]} xValue="date" yValue="death" />
                   <p>Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
                 </>
-              }
-            </div> --}}
+              } --}}
+        {{{graphics data.series "death"}}}
+        <p>Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
+      </div>
     </div>
   </div>
 </main>
