@@ -15,20 +15,7 @@
                     </li>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        {{!--{typeof window !== 'undefined' &&
-                        <LeafletMap position={[item.latitude, item.longitude]} zoom={9} markers={markers}
-                            key={keyMap} />
-                        } --}}
-                        <div id="map{{zip_code}}">
-                        </div>
-                        <div class="container">
-                            <div class="bottom-caption-title">
-                                <p>Covid-19 Testing Locations</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-item" style="padding-top: 40px;">
+                    <div class="carousel-item active" style="padding-top: 40px;">
                         {{{graphics localCovidData "positiveCt"}}}
                         <div class="container">
                             <div class="bottom-caption-title">
@@ -38,8 +25,15 @@
                             </div>
                         </div>
                     </div>
-
-
+                    <div class="carousel-item">
+                        <div id="map{{zip_code}}">
+                        </div>
+                        <div class="container">
+                            <div class="bottom-caption-title">
+                                <p>Covid-19 Testing Locations</p>
+                            </div>
+                        </div>
+                    </div>
                     <div class="carousel-item">
                         <img class="third-slide"
                             src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="

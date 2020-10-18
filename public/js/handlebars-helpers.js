@@ -61,9 +61,20 @@ module.exports = {
         `
         }, '')
 
-        console.log(jsString);
+        let jqueryString = locations.reduce((accumulator, location) => {
+            return `${accumulator}
+            $('#myCarousel${location.zip_code}').on('slid.bs.carousel', function () {
+                var activeIndex = $(this).find('.active').index();           
+                if(activeIndex === 1)
+                {
+                    map${location.zip_code}.invalidateSize();
+                }            
+              });
+            `
+        }, '')
         return `<script type="application/javascript">
-        ${jsString}
+        ${jsString} 
+        ${jqueryString}
     </script>`
     }
 }
