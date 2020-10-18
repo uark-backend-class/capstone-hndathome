@@ -8,11 +8,11 @@ function createSVG(series) {
     let body = d3.select(fakeDom.window.document).select('body');
     //------------------------1. PREPARATION------------------------//
     //-----------------------------SVG------------------------------// 
-    const width = 960;
-    const height = 500;
-    const margin = 5;
-    const padding = 5;
-    const adj = 30;
+    var margin = { top: 0, right: 20, bottom: 0, left: 40 },
+        width = 400 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+    const padding = 0;
+    const adj = 40;
     // we are appending SVG first
     const svg = body.append('div').attr('class', 'container').append("svg")
         .attr("preserveAspectRatio", "xMinYMin meet")
@@ -114,7 +114,7 @@ function createSVG(series) {
                 + "," + (yScale(d.value.positiveCt) + 5) + ")";
         })
         .attr("x", 5)
-        .text(function (d) { return ("Serie ") + d.id; });
+        .text(function (d) { return d.id; });
 
     // Make an SVG Container
     // let svgContainer = body.append('div').attr('class', 'container')
