@@ -14,19 +14,6 @@
         </h4>
         {{>table data=data}}
       </div>
-      {{!-- 
-              {Object.keys(currentUSValues).length === 0 &&
-                <h4 class="loading">Loading<span>.</span><span>.</span><span>.</span></h4>
-              }
-              {Object.keys(currentUSValues).length > 0 &&
-                <>
-                  <h4>Current US Numbers<span style={{ float: "right", fontSize: ".8rem" }}>Last update: {lastUpdateET}</span></h4>
-                  <div class="table-responsive">
-                    <Table currentValues={currentUSValues} caption="The most recent COVID data for the US. The most recent data may not be from today." />
-                  </div>
-                </>
-              }
-            </div> --}}
     </div>
     <hr class="featurette-divider">
     </hr>
@@ -38,34 +25,10 @@
           mollis euismod. Donec sed odio dui. </p>
       </div>
       <div class="col-md-4">
-        {{!-- <h2>US Positives</h2>
-              {historicUSValues.length === 0 &&
-                <h2 class="loading" style={{ textAlign: "center" }}>Loading<span>.</span><span>.</span><span>.</span></h2>
-              }
-              {historicUSValues.length > 0 &&
-                <>
-                  <Chart series={[historicUSValues]} seriesNames={[{
-                    "name": `Positives`
-                  }]} xValue="date" yValue="positive" />
-                  
-                </>
-              } --}}
         {{{graphics data.series "positive"}}}
         <p>Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
       </div>
       <div class="col-md-4">
-        {{!--<h2>US Deaths</h2>
-              {historicUSValues.length === 0 &&
-                <h2 class="loading" style={{ textAlign: "center" }}>Loading<span>.</span><span>.</span><span>.</span></h2>
-              }
-              {historicUSValues.length > 0 &&
-                <>
-                  <Chart series={[historicUSValues]} seriesNames={[{
-                    "name": `Deaths`
-                  }]} xValue="date" yValue="death" />
-                  <p>Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
-                </>
-              } --}}
         {{{graphics data.series "death"}}}
         <p>Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
       </div>

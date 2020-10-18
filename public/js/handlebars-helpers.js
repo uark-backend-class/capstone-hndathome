@@ -43,5 +43,27 @@ module.exports = {
             <i class="fa fw fa-twitter" aria-label="go to twitter"></i></a></li>`
         }
         return twitterLink;
+    },
+    section: function (name, options) {
+        if (!this._sections) this._sections = {};
+        this._sections[name] = options.fn(this);
+        return null;
+    },
+    leafletjs: function (locations) {
+        let jsString = locations.reduce((accumulator, location) => {
+            return `${accumulator} 
+            var map${location.zip_code} = L.map('map${location.zip_code}').setView([${location.latitude}, ${location.longitude}], 9);
+
+        // add an OpenStreetMap tile layer
+        L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map${location.zip_code});
+        `
+        }, '')
+
+        console.log(jsString);
+        return `<script type="application/javascript">
+        ${jsString}
+    </script>`
     }
 }
