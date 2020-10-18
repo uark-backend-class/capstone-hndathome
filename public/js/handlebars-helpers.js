@@ -52,6 +52,9 @@ module.exports = {
     leafletjs: function (locations) {
         let jsString = locations.reduce((accumulator, location) => {
             return `${accumulator} 
+
+            let lat${location.zip_code} = ${location.latitude};
+            let long${location.zip_code} = ${location.longitude};
             var map${location.zip_code} = L.map('map${location.zip_code}').setView([${location.latitude}, ${location.longitude}], 8);
 
         // add an OpenStreetMap tile layer
@@ -74,6 +77,7 @@ module.exports = {
                 if(activeIndex === 1)
                 {
                     map${location.zip_code}.invalidateSize();
+                    map${location.zip_code}.setView([lat${location.zip_code}, long${location.zip_code}], 8);
                 }            
               });
             `
