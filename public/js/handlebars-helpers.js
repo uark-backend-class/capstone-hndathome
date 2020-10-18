@@ -60,9 +60,10 @@ module.exports = {
         }).addTo(map${location.zip_code});
 
         ${location.hereData.reduce((markers, marker) => {
+                const addressLine1 = marker.address.houseNumber ? `${marker.address.houseNumber} ${marker.address.street}` : marker.address.street;
                 return `${markers} 
         L.marker([${marker.latitude}, ${marker.longitude}]).addTo(map${location.zip_code})
-        .bindPopup("${marker.markerText}<br />${marker.address.houseNumber && marker.address.houseNumber} ${marker.address.street}<br/>${marker.address.city}, ${marker.address.stateCode} ${marker.address.postalCode}<br /><a href='tel:${marker.phone}'>${marker.formatPhone}</a>");`
+        .bindPopup("${marker.markerText}<br />${addressLine1}<br/>${marker.address.city}, ${marker.address.stateCode} ${marker.address.postalCode}<br /><a href='tel:${marker.phone}'>${marker.formatPhone}</a>");`
             }, '')}
         `
         }, '')
