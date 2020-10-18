@@ -52,12 +52,17 @@ module.exports = {
     leafletjs: function (locations) {
         let jsString = locations.reduce((accumulator, location) => {
             return `${accumulator} 
-            var map${location.zip_code} = L.map('map${location.zip_code}').setView([${location.latitude}, ${location.longitude}], 9);
+            var map${location.zip_code} = L.map('map${location.zip_code}').setView([${location.latitude}, ${location.longitude}], 8);
 
         // add an OpenStreetMap tile layer
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map${location.zip_code});
+
+        ${location.hereData.reduce((markers, marker) => {
+                return `${markers} 
+        L.marker([${marker.latitude}, ${marker.longitude}]).addTo(map${location.zip_code})`
+            }, '')}
         `
         }, '')
 
