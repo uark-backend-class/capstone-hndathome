@@ -76,7 +76,6 @@ exports.update = async (req, res) => {
 exports.editView = async (req, res) => {
     const locations = await req.user.getLocations({ raw: true });
     let location = await Location.findByPk(req.params.id, { raw: true });
-    console.log(location);
     res.render('add-edit', { location: location, locations: locations, isAuth: true });
 };
 
