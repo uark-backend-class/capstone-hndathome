@@ -1,25 +1,37 @@
 //`https://localcoviddata.com/covid19/v1/cases/newYorkTimes?zipCode=${zipCode}&daysInPast=7` county 7 days
 const axios = require('axios');
 
-let lastZipCode;
+let localCovidArray = [];
 let localCovidData;
-let lastDay;
 
 async function getLocalCovidData(zipCode) {
     let today = new Date();
     today.setHours(0, 0, 0, 0);
+    let todayString = today.toString();
+    let indexFound = -1;
     try {
-        if (zipCode != lastZipCode || localCovidData === undefined || lastDay === undefined || today != lastDay) {
+        indexFound = localCovidArray.findIndex(obj => obj.zipCode === zipCode);
+
+        if (localCovidArray.length === 0 || indexFound === -1 || todayString != localCovidArray[indexFound].lastDay) {
             const url = `https://localcoviddata.com/covid19/v1/cases/newYorkTimes?zipCode=${zipCode}&daysInPast=7`;
             const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
             localCovidData = response.data;
+        }
+        else {
+            localCovidData = { ...localCovidArray[indexFound].localCovidData };
         }
     } catch (error) {
         localCovidData = undefined;
         console.error(error);
     }
-    lastDay = today;
-    lastZipCode = zipCode;
+
+    if (indexFound === -1) {
+        localCovidArray.push({ zipCode: zipCode, lastDay: todayString, localCovidData: { ...localCovidData } })
+    }
+    else {
+        localCovidArray[indexFound].localCovidData = { ...localCovidData };
+        localCovidArray[indexFound].lastDay = todayString;
+    }
     return localCovidData;
 }
 

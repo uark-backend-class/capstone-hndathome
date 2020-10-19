@@ -1,5 +1,6 @@
 //`https://discover.search.hereapi.com/v1/discover?apikey={{apiKey}}&q=Covid&at=${gps}&limit=10` covid-19 testing locations
 const axios = require('axios');
+
 let hereArray = [];
 let gpsMarkers;
 
