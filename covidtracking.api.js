@@ -10,7 +10,6 @@ let lastGetHistoricUSData;
 let lastGetHistoricStatesData;
 let lastGetStatesInfo;
 
-// also check timestamp?
 async function getHistoricUSData() {
     let today = new Date();
     today.setHours(0, 0, 0, 0);

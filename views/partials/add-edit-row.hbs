@@ -1,0 +1,13 @@
+<li class="list-group-item" style="background-color: aliceblue;">
+    <div class="row">
+        <div class="col-6">
+            <input type="text" class="form-control" placeholder="Zip Code" name="zip_code" minlength="5" maxlength="5"
+                pattern="^\d{5}$" value="{{location.zip_code}}" />
+        </div>
+        <div class="col-6">
+            <input type="text" class="form-control" placeholder="Alias" name="alias" value="{{location.alias}}" />
+        </div>
+    </div>
+    <input type="hidden" name="id" value="{{location.id}}" />
+    <input type="hidden" name="pg_zip_code" value="{{location.zip_code}}" />
+</li>

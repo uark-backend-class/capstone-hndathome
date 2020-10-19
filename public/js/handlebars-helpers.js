@@ -44,6 +44,10 @@ module.exports = {
         }
         return twitterLink;
     },
+    isEditRow: function (editId, rowId) {
+        console.log(`compared edit ${editId} to row ${rowId}`)
+        return editId == rowId;
+    },
     section: function (name, options) {
         if (!this._sections) this._sections = {};
         this._sections[name] = options.fn(this);

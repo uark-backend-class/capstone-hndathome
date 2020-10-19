@@ -21,21 +21,25 @@
                     </h5>
                     <form action="/update" method="POST">
                         <ul class="list-group list-group-flush">
+                            {{#each locations}}
+                            {{#if (isEditRow ../location.id this.id)}}
+                            {{>add-edit-row location=../location}}
+                            {{else}}
                             <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-6">
-                                        <input type="text" class="form-control" placeholder="Zip Code" name="zip_code"
-                                            minlength="5" maxlength="5" pattern="^\d{5}$"
-                                            value="{{location.zip_code}}" />
+                                        {{this.zip_code}}
                                     </div>
                                     <div class="col-6">
-                                        <input type="text" class="form-control" placeholder="Alias" name="alias"
-                                            value="{{location.alias}}" />
+                                        {{this.alias}}
                                     </div>
                                 </div>
-                                <input type="hidden" name="id" value="{{location.id}}" />
-                                <input type="hidden" name="pg_zip_code" value="{{location.zip_code}}" />
                             </li>
+                            {{/if}}
+                            {{/each}}
+                            {{#unless location.id}}
+                            {{>add-edit-row location}}
+                            {{/unless}}
                             <li class="list-group-item">
                                 <div class="row">
                                     <div class="col-12">

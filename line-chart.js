@@ -113,7 +113,7 @@ function createSVG(series, yValue) {
         })
         .attr("transform", function (d) {
             return "translate(" + (xScale(d.value.date) + 10)
-                + "," + (yScale(d.value[yValue]) + 5) + ")";
+                + "," + (yScale(d.value[yValue]) - 1) + ")";
         })
         .style("font-weight", "bolder")
         .attr("x", -200)
