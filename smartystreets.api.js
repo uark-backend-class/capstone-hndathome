@@ -26,7 +26,7 @@ async function lookupZipCode(zipCode) {
     else {
         zipCodeArray[indexFound].zipCodeData = { ...zipCodeData };
     }
-    lastZipCode = zipCodeData;
+
     return zipCodeData;
 }
 
