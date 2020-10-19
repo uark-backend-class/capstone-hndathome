@@ -14,8 +14,9 @@ let lastGetStatesInfo;
 async function getHistoricUSData() {
     let today = new Date();
     today.setHours(0, 0, 0, 0);
+    let todayString = today.toString();
     try {
-        if (!historicUSData || lastGetHistoricUSData === undefined || today != lastGetHistoricUSData) {
+        if (!historicUSData || lastGetHistoricUSData === undefined || todayString != lastGetHistoricUSData) {
             const url = `https://api.covidtracking.com/v1/us/daily.json`;
             const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
             historicUSData = response.data;
@@ -23,15 +24,16 @@ async function getHistoricUSData() {
     } catch (error) {
         console.error(error);
     }
-    lastGetHistoricUSData = today;
+    lastGetHistoricUSData = todayString;
     return historicUSData;
 }
 
 async function getHistoricStatesData() {
     let today = new Date();
     today.setHours(0, 0, 0, 0);
+    let todayString = today.toString();
     try {
-        if (!historicStatesData || lastGetHistoricStatesData === undefined || today != lastGetHistoricStatesData) {
+        if (!historicStatesData || lastGetHistoricStatesData === undefined || todayString != lastGetHistoricStatesData) {
             const url = `https://api.covidtracking.com/v1/states/daily.json`;
             const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
             historicStatesData = response.data;
@@ -39,15 +41,16 @@ async function getHistoricStatesData() {
     } catch (error) {
         console.error(error);
     }
-    lastGetHistoricStatesData = today;
+    lastGetHistoricStatesData = todayString;
     return historicStatesData;
 }
 
 async function getStatesInfo() {
     let today = new Date();
     today.setHours(0, 0, 0, 0);
+    let todayString = today.toString();
     try {
-        if (!StatesInfo || lastGetStatesInfo === undefined || today != lastGetStatesInfo) {
+        if (!StatesInfo || lastGetStatesInfo === undefined || todayString != lastGetStatesInfo) {
             const url = `https://api.covidtracking.com/v1/states/info.json`;
             const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
             StatesInfo = response.data;
@@ -55,7 +58,7 @@ async function getStatesInfo() {
     } catch (error) {
         console.error(error);
     }
-    lastGetStatesInfo = today;
+    lastGetStatesInfo = todayString;
     return StatesInfo;
 }
 
