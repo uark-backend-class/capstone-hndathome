@@ -15,6 +15,7 @@
                     </li>
                 </ol>
                 <div class="carousel-inner">
+                    {{#if localCovidData}}
                     <div class="carousel-item active" style="padding-top: 40px;">
                         {{{graphics localCovidData "positiveCt"}}}
                         <div class="container">
@@ -25,6 +26,18 @@
                             </div>
                         </div>
                     </div>
+                    {{else}}
+                    <div class="carousel-item active">
+                        <img class="third-slide"
+                            src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
+                            alt="No data availabe" />
+                        <div class="carousel-container">
+                            <div class="my-carousel-caption">
+                                <p style="text-align: center;">No local Covid-19 data availabe</p>
+                            </div>
+                        </div>
+                    </div>
+                    {{/if}}
                     <div class="carousel-item">
                         <div id="map{{zip_code}}" style="margin-bottom: 45px;">
                         </div>
@@ -38,13 +51,13 @@
                         <img class="third-slide"
                             src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw=="
                             alt="Third slide" />
-                        <div class="container">
-                            <div class="carousel-caption">
-                                <p>{{state}} Department of Health</p>
-                                <ul>
-                                    <li><a class="covid19-links" href={{statesInfo.covid19Site}}>Covid19
+                        <div class="carousel-container">
+                            <div class="my-carousel-caption">
+                                <p style="text-align: center;">{{state}} Department of Health</p>
+                                <ul style="display: table;margin-right: auto;margin-left: auto;">
+                                    <li><a class=" covid19-links" href={{statesInfo.covid19Site}}>Covid-19
                                             Site</a></li>
-                                    <li><a class="covid19-links" href={{statesInfo.covid19SiteSecondary}}>Covid19
+                                    <li><a class="covid19-links" href={{statesInfo.covid19SiteSecondary}}>Covid-19
                                             Secondary
                                             Site</a></li>
                                     {{{getTwitter statesInfo.twitter}}}

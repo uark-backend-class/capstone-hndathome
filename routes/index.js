@@ -11,6 +11,7 @@ router.get('/login/callback', passport.authenticate('google'), (req, res) => {
     delete req.session.returnTo;
 });
 
+router.get('/favicon.ico', function (req, res) { res.sendStatus(204); });
 router.get('/', homeController.render);
 router.use(isAuthenticated);
 router.get('/list', locationController.getAll);

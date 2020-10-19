@@ -62,7 +62,7 @@ module.exports = {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(map${location.zip_code});
 
-        ${location.hereData.reduce((markers, marker) => {
+        ${location.hereData && location.hereData.reduce((markers, marker) => {
                 const addressLine1 = marker.address.houseNumber ? `${marker.address.houseNumber} ${marker.address.street}` : marker.address.street;
                 return `${markers} 
         L.marker([${marker.latitude}, ${marker.longitude}]).addTo(map${location.zip_code})
@@ -70,6 +70,7 @@ module.exports = {
             }, '')}
         `
         }, '')
+
         let jqueryString = locations.reduce((accumulator, location) => {
             return `${accumulator}
             $('#myCarousel${location.zip_code}').on('slid.bs.carousel', function () {

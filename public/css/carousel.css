@@ -83,9 +83,9 @@
     margin-top: 3rem;
   }
   
-  .carousel-caption {
-    text-align: unset;
-    padding-bottom: 124px;
+  .my-carousel-caption {
+   z-index: 10;
+   color: #fff;
   }
   
   .covid19-links {
@@ -120,4 +120,11 @@
 
 td.hiddenRow {
   background-color: aliceblue;
+}
+
+.carousel-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }

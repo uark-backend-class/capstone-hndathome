@@ -6,5 +6,6 @@ exports.render = async (req, res) => {
     let usDaily = [...historicUSData];
     const series = { id: "US Covid-19", values: usDaily.reverse() };
     const data = { historic: historicUSData, series: [series], lastUpdateET: lastUpdateET.toLocaleDateString(), caption: "The most recent COVID data for the US. The most recent data may not be from today." }
-    res.render('home', { data });
+
+    req.isAuthenticated() ? res.render('home', { data }) : res.render('home', { data, layout: 'noauth-main.hbs' });
 }
