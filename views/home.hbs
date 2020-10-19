@@ -1,37 +1,41 @@
-<main>
-  <div class="container">
-    <div class="row featurette first-featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading">Where COVID-19 Matters</h2>
-        <p class="lead">This Express web application allows you to enter multiple zip codes and
-          returns COVID-19 statistics, links to state COVID-19 websites, and if available where to get
-          COVID-19 testing. Find out COVID-19 facts where it matters to you, whether for travel or for family
-          and friends living across the United States.</p>
-        <p><a class="btn btn-primary btn-lg" href="/list" role="button">Enter zip codes &raquo;</a></p>
+{{>navbar}}
+<div class="container">
+  <main role="main">
+    <div class="container">
+      <div class="row featurette first-featurette">
+        <div class="col-md-7">
+          <h2 class="featurette-heading">Where COVID-19 Matters</h2>
+          <p class="lead">This Express web application allows you to enter multiple zip codes and
+            returns COVID-19 statistics, links to state COVID-19 websites, and if available where to get
+            COVID-19 testing. Find out COVID-19 facts where it matters to you, whether for travel or for family
+            and friends living across the United States.</p>
+          <p><a class="btn btn-primary btn-lg" href="/list" role="button">Enter zip codes &raquo;</a></p>
+        </div>
+        <div class="col-md-5">
+          <h4>Current US Numbers<span style="float: right; font-size: .8rem">Last update: {{data.lastUpdateET}}</span>
+          </h4>
+          {{>table data=data}}
+        </div>
       </div>
-      <div class="col-md-5">
-        <h4>Current US Numbers<span style="float: right; font-size: .8rem">Last update: {{data.lastUpdateET}}</span>
-        </h4>
-        {{>table data=data}}
+      <hr class="featurette-divider">
+      </hr>
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
+            mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
+            mollis euismod. Donec sed odio dui. </p>
+        </div>
+        <div class="col-md-4">
+          {{{graphics data.series "positive"}}}
+          <p style="text-align: center;">Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
+        </div>
+        <div class="col-md-4">
+          {{{graphics data.series "death"}}}
+          <p style="text-align: center;">Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
+        </div>
       </div>
     </div>
-    <hr class="featurette-divider">
-    </hr>
-    <div class="row">
-      <div class="col-md-4">
-        <h2>Heading</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor
-          mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna
-          mollis euismod. Donec sed odio dui. </p>
-      </div>
-      <div class="col-md-4">
-        {{{graphics data.series "positive"}}}
-        <p style="text-align: center;">Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
-      </div>
-      <div class="col-md-4">
-        {{{graphics data.series "death"}}}
-        <p style="text-align: center;">Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
-      </div>
-    </div>
-  </div>
-</main>
+  </main>
+
+</div>

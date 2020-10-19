@@ -1,46 +1,51 @@
-<h1>Zip Codes</h1>
-<div class="row">
-    <div class="col-md-6">
-        <div class="card">
-            <h5 class="card-header">
-                <div class="row">
-                    <div class="col-4">
-                        Zip Code
-                    </div>
-                    <div class="col-4">
-                        Alias
-                    </div>
-                    <div class="col-4">
-                        Action
-                    </div>
+{{>navbar}}
+<div class="container">
+    <main role="main">
+        <h1 style="margin-top: 20px;">Zip Codes</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <h5 class="card-header">
+                        <div class="row">
+                            <div class="col-4">
+                                Zip Code
+                            </div>
+                            <div class="col-4">
+                                Alias
+                            </div>
+                            <div class="col-4">
+                                Action
+                            </div>
+                        </div>
+                    </h5>
+                    <ul class="list-group list-group-flush">
+                        {{#each locations}}
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-4">
+                                    {{this.zip_code}}
+                                </div>
+                                <div class="col-4">
+                                    {{this.alias}}
+                                </div>
+                                <div class="col-4">
+                                    <a href="/edit/{{this.id}}" class="btn btn-secondary">Edit</a>
+                                    <a href="/delete/{{this.id}}" class="btn btn-danger">Delete</a>
+                                </div>
+                            </div>
+                        </li>
+                        {{/each}}
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-12">
+                                    <a href="/add" class="btn btn-primary"><i class="fa fw fa-plus"
+                                            aria-label="information on Parameter Hospitalizations"></i> Zip Code</a>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
-            </h5>
-            <ul class="list-group list-group-flush">
-                {{#each locations}}
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-4">
-                            {{this.zip_code}}
-                        </div>
-                        <div class="col-4">
-                            {{this.alias}}
-                        </div>
-                        <div class="col-4">
-                            <a href="/edit/{{this.id}}" class="btn btn-secondary">Edit</a>
-                            <a href="/delete/{{this.id}}" class="btn btn-danger">Delete</a>
-                        </div>
-                    </div>
-                </li>
-                {{/each}}
-                <li class="list-group-item">
-                    <div class="row">
-                        <div class="col-12">
-                            <a href="/add" class="btn btn-primary"><i class="fa fw fa-plus"
-                                    aria-label="information on Parameter Hospitalizations"></i> Zip Code</a>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+            </div>
         </div>
-    </div>
+    </main>
 </div>

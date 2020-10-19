@@ -21,5 +21,5 @@ exports.render = async (req, res) => {
             return { ...location, hereData: hereData, localCovidData: series, statesInfo: statesInfo.find(({ state }) => state === location.state_abbr), }
         })
     )
-    res.render('summary', { locations: updatedLocations });
+    res.render('summary', { locations: updatedLocations, isAuth: true });
 }

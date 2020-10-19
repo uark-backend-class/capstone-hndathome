@@ -15,7 +15,7 @@ router.get('/favicon.ico', function (req, res) { res.sendStatus(204); });
 router.get('/', homeController.render);
 router.use(isAuthenticated);
 router.get('/list', locationController.getAll);
-router.get('/add', (req, res) => { res.render('add-edit') });
+router.get('/add', locationController.add);
 router.get('/edit/:id', locationController.editView);
 router.get('/delete/:id', locationController.delete);
 router.post('/update', locationController.update);
