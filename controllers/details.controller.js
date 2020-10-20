@@ -6,7 +6,7 @@ exports.render = async (req, res) => {
     const locations = await req.user.getLocations({ raw: true });
     const location = locations.filter(obj => obj.zip_code == req.params.zipcode)
     const statesInfo = await covidtracking.getStatesInfo();
-    //const historicStatesData = await covidtracking.getHistoricStatesData();
+    //const historicStateData = await covidtracking.getHistoricStateData();
 
     const updatedLocations = await Promise.all(
         location.map(async (current) => {
@@ -23,6 +23,5 @@ exports.render = async (req, res) => {
             return { ...current, hereData: hereData, localCovidData: series, statesInfo: statesInfo.find(({ state }) => state === current.state_abbr), }
         })
     )
-
     res.render('details', { location: updatedLocations[0], locations: locations, isAuth: true });
 }
