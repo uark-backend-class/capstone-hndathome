@@ -6,10 +6,8 @@
 const axios = require('axios');
 
 let historicUSData;
-let historicStatesData;
 let StatesInfo;
 let lastGetHistoricUSData;
-let lastGetHistoricStatesData;
 let lastGetStatesInfo;
 
 async function getHistoricUSData() {
@@ -29,21 +27,38 @@ async function getHistoricUSData() {
     return historicUSData;
 }
 
-async function getHistoricStatesData() {
+let historicStateData;
+let historicStateArray = [];
+
+async function getHistoricStateData(stateAbbr) {
     let today = new Date();
     today.setHours(0, 0, 0, 0);
     let todayString = today.toString();
+    let indexFound = -1;
     try {
-        if (!historicStatesData || lastGetHistoricStatesData === undefined || todayString != lastGetHistoricStatesData) {
-            const url = `https://api.covidtracking.com/v1/states/daily.json`;
+        indexFound = historicStateArray.findIndex(obj => obj.stateAbbr === stateAbbr);
+        if (historicStateArray.length === 0 || indexFound === -1 || todayString != historicStateArray[indexFound].lastDay) {
+            const url = `https://api.covidtracking.com/v1/states/${stateAbbr.toLowerCase()}/daily.json`;
             const response = await axios.get(url, { headers: { 'Accept': 'application/json' } });
-            historicStatesData = response.data;
+            historicStateData = response.data;
+        }
+        else {
+            historicStateData = historicStateArray[indexFound].historicStateData;
         }
     } catch (error) {
+        historicUSData = undefined;
         console.error(error);
     }
-    lastGetHistoricStatesData = todayString;
-    return historicStatesData;
+
+    if (indexFound === -1) {
+        historicStateArray.push({ stateAbbr: stateAbbr, lastDay: todayString, historicStateData: [...(historicStateData || [])] })
+    }
+    else {
+        historicStateArray[indexFound].historicStateData = [...(historicStateData || [])];
+        historicStateArray[indexFound].lastDay = todayString;
+    }
+
+    return historicStateData;
 }
 
 async function getStatesInfo() {
@@ -65,6 +80,6 @@ async function getStatesInfo() {
 
 module.exports = {
     getHistoricUSData,
-    getHistoricStatesData,
+    getHistoricStateData,
     getStatesInfo
 };
