@@ -24,7 +24,9 @@ router.get('/summary', summaryController.render);
 router.get('/details/:zipcode', detailsController.render);
 router.get('/logout', (req, res) => {
     req.logout();
-    res.send('Logout successful');
+    req.session.destroy(function (err) {
+        res.redirect('/');
+    });
 });
 
 module.exports = router;

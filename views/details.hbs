@@ -14,10 +14,10 @@
         <div class="row featurette">
             <div class="col-md-4">
                 {{#if location.localCovidData}}
-                {{{graphics location.localCovidData "positiveCt"}}}
                 <p style="text-align: center;"><strong>
                         Covid-19 Positives</strong>
                 </p>
+                {{{graphics location.localCovidData "positiveCt"}}}
                 <p>Source: <span style="font-weight: 500;"><em>The New York Times</em></span> via <a
                         href="https://anypoint.mulesoft.com/exchange/portals/mulesoft-2778/5a0bd415-9488-4e33-88d6-ba31cbef5957/contact-tracing-exp-api/">COVID-19
                         Data Tracking API</a></p>
@@ -30,10 +30,10 @@
             </div>
             <div class="col-md-4">
                 {{#if location.localCovidData}}
-                {{{graphics location.localCovidData "deathCt"}}}
                 <p style="text-align: center;"><strong>
                         Covid-19 Deaths</strong>
                 </p>
+                {{{graphics location.localCovidData "deathCt"}}}
                 <p>Source: <span style="font-weight: 500;"><em>The New York Times</em></span> via <a
                         href="https://anypoint.mulesoft.com/exchange/portals/mulesoft-2778/5a0bd415-9488-4e33-88d6-ba31cbef5957/contact-tracing-exp-api/">COVID-19
                         Data Tracking API</a></p>
