@@ -1,13 +1,16 @@
 {{>navbar}}
 <div class="container">
     <main role="main">
-        <h1>
+        <h1 style="margin-top: 20px; text-align: right;">
             {{#if location.alias}}
             {{location.alias}}
             {{else}}
             {{location.default_city}}, {{location.state_abbr}} {{location.zip_code}}
             {{/if}}
         </h1>
+        <h3 class="pb-3 mb-4 font-italic border-bottom">
+            Local Covid-19 Information
+        </h3>
         <div class="row featurette">
             <div class="col-md-4">
                 {{#if location.localCovidData}}
@@ -20,7 +23,9 @@
                         Data Tracking API</a></p>
 
                 {{else}}
-                <p style="text-align: center;">No local Covid-19 data availabe</p>
+                <div class="carousel-container" style=" background-color: lightblue;">
+                    <p style="text-align: center;">No local Covid-19 data availabe</p>
+                </div>
                 {{/if}}
             </div>
             <div class="col-md-4">
@@ -34,7 +39,9 @@
                         Data Tracking API</a></p>
 
                 {{else}}
-                <p style="text-align: center;">No local Covid-19 data availabe</p>
+                <div class="carousel-container" style=" background-color: lightblue;">
+                    <p style="text-align: center;">No local Covid-19 data availabe</p>
+                </div>
                 {{/if}}
             </div>
             <div class="col-md-4 ">
@@ -71,15 +78,31 @@
                 </div>
             </div>
         </div>
+        <h3 class="pb-3 mb-4 font-italic border-bottom" style="display: flex;">
+            State Covid-19 Information <span style="font-size: 16px;">
+                <ul class="list-group list-group-horizontal">
+                    <li class="list-group-item" style="border: none; padding: 0 12px; margin-top: 12px;"><a
+                            href={{location.statesInfo.covid19Site}}>{{data.state}} Department of Health Covid-19
+                            Site</a></li>
+                    <li class="list-group-item" style="border: none; padding: 0 12px; margin-top: 12px;"><a
+                            href={{location.statesInfo.covid19SiteSecondary}}>Covid-19
+                            Secondary
+                            Site</a></li>
+                    {{{getTwitter2 location.statesInfo.twitter}}}
+                </ul>
+            </span>
+        </h3>
         <div class="row featurette">
             <div class="col-md-4">
                 {{{graphics data.series "positive"}}}
-                <p style="text-align: center;">Source: <a href="https://covidtracking.com/">The COVID Tracking
+                <p style="text-align: center;">Source: <a href="https://covidtracking.com/">The COVID
+                        Tracking
                         Project</a></p>
             </div>
             <div class="col-md-4">
                 {{{graphics data.series "death"}}}
-                <p style="text-align: center;">Source: <a href="https://covidtracking.com/">The COVID Tracking
+                <p style="text-align: center;">Source: <a href="https://covidtracking.com/">The COVID
+                        Tracking
                         Project</a></p>
             </div>
             <div class="col-md-4">
@@ -88,48 +111,10 @@
                 </h4>
                 {{>table data=data}}
             </div>
-            <div class="col-md-4">
-                {{!-- {allDays.length === 0 &&
-                <h5 style={{ textAlign: "center", paddingTop: "200px" }}>No data available</h5>
-                }
-                {(allDays.length > 0) &&
-                <>
-                    <Chart series={allDays} seriesNames={[{ "name" : `Positives` }]} xValue="date" yValue="positive" />
-                    <p>Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
-                </>
-                } --}}
-            </div>
-            <div class="col-md-4">
-                {{!-- {allDays.length === 0 &&
-                <h5 style={{ textAlign: "center", paddingTop: "200px" }}>No data available</h5>
-                }
-                {(allDays.length > 0) &&
-                <>
-                    <Chart series={allDays} seriesNames={[{ "name" : `Deaths` }]} xValue="date" yValue="death" />
-                    <p>Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
-                </>
-                } --}}
-            </div>
-            <div class="col-md-4">
-                {{!-- {(stateCurrent && Object.keys(stateCurrent).length !== 0) &&
-                <>
-                    <h4>Current {geoState} Numbers<span style={{ float: "right", fontSize: ".8rem" }}>Last update:
-                            {lastUpdateEt}</span></h4>
-                    <div class="table-responsive">
-                        <Table currentValues={stateCurrent} caption={`The most recent COVID data for ${geoState}. The
-                            current value may be different than today.`} />
-                    </div>
-                    <p>{geoState} Department of Health</p>
-                    <ul>
-                        <li><a href={state_info.covid19Site}>Covid-19 Site</a></li>
-                        <li><a href={state_info.covid19SiteSecondary}>Covid-19 Secondary Site</a></li>
-                        {state_info.twitter.startsWith('@') && <li><a
-                                href={`https://twitter.com/${state_info.twitter.slice(1)}`}>
-                                <FontAwesomeIcon icon={faTwitter} aria-label="go to twitter" /></a></li>}
-                    </ul>
-                    <p>Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
-                </>
-                } --}}
+        </div>
+        <div class="row">
+            <div class="col-12">
+
             </div>
         </div>
     </main>
