@@ -52,6 +52,9 @@ module.exports = {
         this._sections[name] = options.fn(this);
         return null;
     },
+    singleleafletjs: function (location) {
+        return [location];
+    },
     leafletjs: function (locations) {
         let jsString = locations.reduce((accumulator, location) => {
             return `${accumulator} 

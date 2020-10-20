@@ -1,5 +1,113 @@
 {{>navbar}}
 <div class="container">
     <main role="main">
+        <h1>
+            {{#if location.alias}}
+            {{location.alias}}
+            {{else}}
+            {{location.default_city}}, {{location.state_abbr}} {{location.zip_code}}
+            {{/if}}
+        </h1>
+        <div class="row featurette">
+            <div class="col-md-4">
+                {{#if location.localCovidData}}
+                {{{graphics location.localCovidData "positiveCt"}}}
+                <p style="text-align: center;">
+                    Covid-19 Positives
+                </p>
+                <p>Source: <strong><em>The New York Times</em></strong> via <a
+                        href="https://anypoint.mulesoft.com/exchange/portals/mulesoft-2778/5a0bd415-9488-4e33-88d6-ba31cbef5957/contact-tracing-exp-api/">COVID-19
+                        Data Tracking API</a></p>
+
+                {{else}}
+                <p style="text-align: center;">No local Covid-19 data availabe</p>
+                {{/if}}
+            </div>
+            <div class="col-md-4">
+                {{#if location.localCovidData}}
+                {{{graphics location.localCovidData "deathCt"}}}
+                <p style="text-align: center;">
+                    Covid-19 Deaths
+                </p>
+                <p>Source: <strong><em>The New York Times</em></strong> via <a
+                        href="https://anypoint.mulesoft.com/exchange/portals/mulesoft-2778/5a0bd415-9488-4e33-88d6-ba31cbef5957/contact-tracing-exp-api/">COVID-19
+                        Data Tracking API</a></p>
+
+                {{else}}
+                <p style="text-align: center;">No local Covid-19 data availabe</p>
+                {{/if}}
+            </div>
+            <div class="col-md-4">
+                <div id="map{{location.zip_code}}">
+                </div>
+                <p>Covid-19 Testing Locations</p>
+                {{!-- <div class="card mb-4 box-shadow">
+                    <LeafletMap class="card-img-top" position={[latitude, longitude]} zoom={8} markers={markers} />
+                    <div class="card-body">
+                        <p>Source: <a href="https://developer.here.com/blog/finding-covid-19-testing-sites">HERE
+                                Geocoding and Search API</a></p>
+                        <p data-toggle="collapse" data-target="#divLocations">
+                            <FontAwesomeIcon fixedWidth class="bootstrap-primary" icon={faExpandArrowsAlt}
+                                aria-label="show list of Covid-19 locations" />Covid-19 Testing Locations</p>
+                        <div class="accordian-body collapse" id="divLocations">
+                            <ul class="list-group list-group-flush">
+                                {markers.length === 0 && <li class="list-group-item"><strong>No locations
+                                        found.</strong></li>}
+                                {markers.length > 0 && markers.map((location, index) =>
+                                <TestLocation datapoint={location} key={index} />)}
+                            </ul>
+                        </div>
+                    </div>
+                </div> --}}
+            </div>
+        </div>
+        <div class="row featurette">
+            <div class="col-md-4">
+                {{!-- {allDays.length === 0 &&
+                <h5 style={{ textAlign: "center", paddingTop: "200px" }}>No data available</h5>
+                }
+                {(allDays.length > 0) &&
+                <>
+                    <Chart series={allDays} seriesNames={[{ "name" : `Positives` }]} xValue="date" yValue="positive" />
+                    <p>Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
+                </>
+                } --}}
+            </div>
+            <div class="col-md-4">
+                {{!-- {allDays.length === 0 &&
+                <h5 style={{ textAlign: "center", paddingTop: "200px" }}>No data available</h5>
+                }
+                {(allDays.length > 0) &&
+                <>
+                    <Chart series={allDays} seriesNames={[{ "name" : `Deaths` }]} xValue="date" yValue="death" />
+                    <p>Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
+                </>
+                } --}}
+            </div>
+            <div class="col-md-4">
+                {{!-- {(stateCurrent && Object.keys(stateCurrent).length !== 0) &&
+                <>
+                    <h4>Current {geoState} Numbers<span style={{ float: "right", fontSize: ".8rem" }}>Last update:
+                            {lastUpdateEt}</span></h4>
+                    <div class="table-responsive">
+                        <Table currentValues={stateCurrent} caption={`The most recent COVID data for ${geoState}. The
+                            current value may be different than today.`} />
+                    </div>
+                    <p>{geoState} Department of Health</p>
+                    <ul>
+                        <li><a href={state_info.covid19Site}>Covid-19 Site</a></li>
+                        <li><a href={state_info.covid19SiteSecondary}>Covid-19 Secondary Site</a></li>
+                        {state_info.twitter.startsWith('@') && <li><a
+                                href={`https://twitter.com/${state_info.twitter.slice(1)}`}>
+                                <FontAwesomeIcon icon={faTwitter} aria-label="go to twitter" /></a></li>}
+                    </ul>
+                    <p>Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a></p>
+                </>
+                } --}}
+            </div>
+        </div>
     </main>
 </div>
+{{#section 'script'}}
+{{{leafletjs (singleleafletjs location)}}}
+{{/section}}

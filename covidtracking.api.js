@@ -1,6 +1,8 @@
 //`https://api.covidtracking.com/v1/us/daily.json` historic us
 //`https://api.covidtracking.com/v1/states/daily.json` all states historic
 //`https://api.covidtracking.com/v1/states/info.json` all states info
+
+//https://api.covidtracking.com/v1/states/ca/daily.json
 const axios = require('axios');
 
 let historicUSData;

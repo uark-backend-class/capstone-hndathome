@@ -2,6 +2,7 @@ const covidtracking = require('../covidtracking.api')
 
 exports.render = async (req, res) => {
     const historicUSData = await covidtracking.getHistoricUSData();
+    //const historicStatesData = await covidtracking.getHistoricStatesData();
     const lastUpdateET = new Date(historicUSData[0].lastUpdateET || historicUSData[0].lastModified || historicUSData[0].datechecked);
     let usDaily = [...historicUSData];
     const series = { id: "US Covid-19", values: usDaily.reverse() };
