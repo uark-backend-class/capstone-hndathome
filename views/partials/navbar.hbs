@@ -33,9 +33,14 @@
                     {{/each}}
                 </div>
             </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/logout">Log out</a>
+            </li>
             {{/if}}
             {{else}}
-            <a class="nav-link" href="/login">Login</a>
+            <li class="nav-item active">
+                <a class="nav-link" href="/login">Login</a>
+            </li>
             {{/if}}
         </ul>
     </div>
