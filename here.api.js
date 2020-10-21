@@ -28,7 +28,7 @@ async function getCovid19TestingLocations(gps) {
 
             const { items } = response.data;
             const dataMarkers = items && items.filter(current => current.title.startsWith("Covid-19 Testing Site")).reduce((accumulator, current) => {
-                return [...accumulator, { markerText: current.title.slice(23), latitude: current.position.lat, longitude: current.position.lng, phone: current.contacts.phone ? current.contacts[0].phone[0].value : "", formatPhone: formatPhoneNumber(current.contacts.phone ? current.contacts[0].phone[0].value : ""), address: current.address }]
+                return [...accumulator, { markerText: current.title.slice(23), latitude: current.position.lat, longitude: current.position.lng, phone: current.contacts[0].phone ? current.contacts[0].phone[0].value : "", formatPhone: formatPhoneNumber(current.contacts[0].phone ? current.contacts[0].phone[0].value : ""), address: current.address }]
             }, []);
             gpsMarkers = dataMarkers;
         }
