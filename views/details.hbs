@@ -46,7 +46,7 @@
             </div>
             <div class="col-md-4 ">
                 <div class="card mb-4 box-shadow">
-                    <div id="map{{location.zip_code}}" className="card-img-top">
+                    <div id="map{{location.zip_code}}" class="card-img-top">
                     </div>
                     <div class="card-body">
                         <p>Source: <a href="https://developer.here.com/blog/finding-covid-19-testing-sites">HERE
@@ -58,7 +58,7 @@
                         <div class="accordian-body collapse" id="divLocations">
                             <ul class="list-group list-group-flush">
                                 {{#each location.hereData}}
-                                <li className="list-group-item">
+                                <li class="list-group-item">
                                     <address>
                                         {{this.markerText}}<br />
                                         {{#if this.address.houseNumber}}
@@ -78,19 +78,21 @@
                 </div>
             </div>
         </div>
-        <h3 class="pb-3 mb-4 font-italic border-bottom" style="display: flex;">
-            State Covid-19 Information <span style="font-size: 16px;">
-                <ul class="list-group list-group-horizontal">
-                    <li class="list-group-item" style="border: none; padding: 0 12px; margin-top: 12px;"><a
-                            href={{location.statesInfo.covid19Site}}>{{data.state}} Department of Health Covid-19
-                            Site</a></li>
-                    <li class="list-group-item" style="border: none; padding: 0 12px; margin-top: 12px;"><a
-                            href={{location.statesInfo.covid19SiteSecondary}}>Covid-19
-                            Secondary
-                            Site</a></li>
-                    {{{getTwitter2 location.statesInfo.twitter}}}
-                </ul>
-            </span>
+        <h3 class="pb-3 mb-4 font-italic border-bottom">
+            <div class="row">
+                <div class="col-md-6">
+                    State Covid-19 Information
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-group list-group-horizontal" style="font-size: 16px; float:right">
+                        <li class="list-group-item"><a href={{location.statesInfo.covid19Site}}>Covid-19
+                                Site</a></li>
+                        <li class="list-group-item"><a href={{location.statesInfo.covid19SiteSecondary}}>Covid-19
+                                Secondary Site</a></li>
+                        {{{getTwitter2 location.statesInfo.twitter}}}
+                    </ul>
+                </div>
+            </div>
         </h3>
         <div class="row featurette">
             <div class="col-md-4">

@@ -47,7 +47,7 @@ module.exports = {
     getTwitter2: function (str) {
         let twitterLink = "";
         if (str.startsWith('@')) {
-            twitterLink = `<li class="list-group-item" style="border: none; padding: 0 12px; margin-top: 12px;"><a 
+            twitterLink = `<li class="list-group-item"><a 
             href=https://twitter.com/${str.slice(1)}>
             <i class="fa fw fa-twitter" aria-label="go to twitter"></i></a></li>`
         }
