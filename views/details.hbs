@@ -12,8 +12,8 @@
             Local Covid-19 Information
         </h3>
         <div class="row featurette">
+            {{#if location.localCovidData}}
             <div class="col-lg-4">
-                {{#if location.localCovidData}}
                 <p style="text-align: center;"><strong>
                         Covid-19 Positives</strong>
                 </p>
@@ -21,15 +21,16 @@
                 <p>Source: <span style="font-weight: 500;"><em>The New York Times</em></span> via <a
                         href="https://anypoint.mulesoft.com/exchange/portals/mulesoft-2778/5a0bd415-9488-4e33-88d6-ba31cbef5957/contact-tracing-exp-api/">COVID-19
                         Data Tracking API</a></p>
-
-                {{else}}
-                <div class="carousel-container" style=" background-color: lightblue;">
+            </div>
+            {{else}}
+            <div class="col-lg-4" style="padding: 0 12px 24px 12px;">
+                <div class="carousel-container" style="background-color: lightblue; border-radius: 3px">
                     <p style="text-align: center;">No local Covid-19 data availabe</p>
                 </div>
-                {{/if}}
             </div>
+            {{/if}}
+            {{#if location.localCovidData}}
             <div class="col-lg-4">
-                {{#if location.localCovidData}}
                 <p style="text-align: center;"><strong>
                         Covid-19 Deaths</strong>
                 </p>
@@ -37,13 +38,14 @@
                 <p>Source: <span style="font-weight: 500;"><em>The New York Times</em></span> via <a
                         href="https://anypoint.mulesoft.com/exchange/portals/mulesoft-2778/5a0bd415-9488-4e33-88d6-ba31cbef5957/contact-tracing-exp-api/">COVID-19
                         Data Tracking API</a></p>
-
-                {{else}}
-                <div class="carousel-container" style=" background-color: lightblue;">
+            </div>
+            {{else}}
+            <div class="col-lg-4" style="padding: 0 12px 24px 12px;">
+                <div class="carousel-container" style=" background-color: lightblue; border-radius: 3px">
                     <p style="text-align: center;">No local Covid-19 data availabe</p>
                 </div>
-                {{/if}}
             </div>
+            {{/if}}
             <div class="col-lg-4 ">
                 <div class="card mb-4 box-shadow">
                     <div id="map{{location.zip_code}}" class="card-img-top">
@@ -112,11 +114,6 @@
                         {{data.lastUpdateET}}</span>
                 </h4>
                 {{>table data=data}}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12">
-
             </div>
         </div>
     </main>
