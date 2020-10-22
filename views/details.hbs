@@ -12,7 +12,7 @@
             Local Covid-19 Information
         </h3>
         <div class="row featurette">
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 {{#if location.localCovidData}}
                 <p style="text-align: center;"><strong>
                         Covid-19 Positives</strong>
@@ -28,7 +28,7 @@
                 </div>
                 {{/if}}
             </div>
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 {{#if location.localCovidData}}
                 <p style="text-align: center;"><strong>
                         Covid-19 Deaths</strong>
@@ -44,7 +44,7 @@
                 </div>
                 {{/if}}
             </div>
-            <div class="col-md-4 ">
+            <div class="col-lg-4 ">
                 <div class="card mb-4 box-shadow">
                     <div id="map{{location.zip_code}}" class="card-img-top">
                     </div>
@@ -52,7 +52,7 @@
                         <p>Source: <a href="https://developer.here.com/blog/finding-covid-19-testing-sites">HERE
                                 Geocoding and Search API</a></p>
                         <p data-toggle="collapse" data-target="#divLocations">
-                            <i class="fa fw fa-info-circle bootstrap-primary"
+                            <i class="fa fa-fw fa-info-circle bootstrap-primary"
                                 aria-label="Covid-19 Testing Locations Information"></i>
                             Covid-19 Testing Locations</p>
                         <div class="accordian-body collapse" id="divLocations">
@@ -95,19 +95,19 @@
             </div>
         </h3>
         <div class="row featurette">
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 {{{graphics data.series "positive"}}}
                 <p style="text-align: center;">Source: <a href="https://covidtracking.com/">The COVID
                         Tracking
                         Project</a></p>
             </div>
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 {{{graphics data.series "death"}}}
                 <p style="text-align: center;">Source: <a href="https://covidtracking.com/">The COVID
                         Tracking
                         Project</a></p>
             </div>
-            <div class="col-md-4">
+            <div class="col-lg-4">
                 <h4>Current {{data.state}} Numbers<span style="float: right; font-size: .8rem">Last update:
                         {{data.lastUpdateET}}</span>
                 </h4>

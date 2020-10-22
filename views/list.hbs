@@ -3,7 +3,7 @@
     <main role="main">
         <h1 style="margin-top: 20px;">Zip Codes</h1>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-lg-6">
                 <div class="card">
                     <h5 class="card-header">
                         <div class="row">
@@ -28,18 +28,23 @@
                                 <div class="col-4">
                                     {{this.alias}}
                                 </div>
-                                <div class="col-4">
-                                    <a href="/edit/{{this.id}}" class="btn btn-secondary">Edit</a>
-                                    <a href="/delete/{{this.id}}" class="btn btn-danger">Delete</a>
+                                <div class="col-4" style="padding: 0px;">
+                                    <a href="/edit/{{this.id}}" class="btn btn-secondary" title="Edit"><i
+                                            class="fa fa-fw fa-edit" aria-label="edit zip code"></i></a>
+                                    <a href="/delete/{{this.id}}" class="btn btn-danger" title="Delete"><i
+                                            class="fa fa-fw fa-trash" aria-label="edit zip code"></i></a>
                                 </div>
                             </div>
                         </li>
                         {{/each}}
                         <li class="list-group-item">
                             <div class="row">
-                                <div class="col-12">
-                                    <a href="/add" class="btn btn-primary"><i class="fa fw fa-plus"
+                                <div class="col-6">
+                                    <a href="/add" class="btn btn-primary"><i class="fa fa-fw fa-plus"
                                             aria-label="add zip code"></i> Zip Code</a>
+                                </div>
+                                <div class="col-6">
+                                    <a href="/summary" class="btn btn-success">Get Data</a>
                                 </div>
                             </div>
                         </li>

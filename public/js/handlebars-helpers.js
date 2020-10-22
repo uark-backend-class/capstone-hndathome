@@ -11,10 +11,10 @@ module.exports = {
         let str = "";
         if (number) {
             if (number > 0) {
-                str = `<i class="fa fw fa-caret-up increase"></i>`
+                str = `<i class="fa fa-fw fa-caret-up increase"></i>`
             }
             else {
-                str = `<i class="fa fw fa-caret-down decrease"></i>`
+                str = `<i class="fa fa-fw fa-caret-down decrease"></i>`
             }
         }
         return str;
@@ -23,10 +23,10 @@ module.exports = {
         let str = "";
         if (number) {
             if (number > 0) {
-                str = `<i class="fa fw fa-plus decrease"></i>`
+                str = `<i class="fa fa-fw fa-plus decrease"></i>`
             }
             else {
-                str = `<i class="fa fw fa-minus increase"></i>`
+                str = `<i class="fa fa-fw fa-minus increase"></i>`
             }
         }
         return str;
@@ -40,7 +40,7 @@ module.exports = {
         if (str.startsWith('@')) {
             twitterLink = `<li><a class="covid19-links"
             href=https://twitter.com/${str.slice(1)}>
-            <i class="fa fw fa-twitter" aria-label="go to twitter"></i></a></li>`
+            <i class="fa fa-fw fa-twitter" aria-label="go to twitter"></i></a></li>`
         }
         return twitterLink;
     },
@@ -49,7 +49,7 @@ module.exports = {
         if (str.startsWith('@')) {
             twitterLink = `<li class="list-group-item"><a 
             href=https://twitter.com/${str.slice(1)}>
-            <i class="fa fw fa-twitter" aria-label="go to twitter"></i></a></li>`
+            <i class="fa fa-fw fa-twitter" aria-label="go to twitter"></i></a></li>`
         }
         return twitterLink;
     },
