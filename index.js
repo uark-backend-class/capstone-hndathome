@@ -35,7 +35,7 @@ function errorNotification(err, str, req) {
     console.log('ERROR', err);
 }
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log(`Where Covid-19 Matters running on port 3000`);
 });
 
