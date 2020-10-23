@@ -1,6 +1,7 @@
 {{>navbar}}
 <div class="container">
     <main role="main">
+        {{#if location}}
         <h1 style="margin-top: 20px; text-align: right;">
             {{#if location.alias}}
             {{location.alias}}
@@ -116,8 +117,15 @@
                 {{>table data=data}}
             </div>
         </div>
+        {{else}}
+        <h1 style="margin-top: 20px; text-align: right;">
+            Invalid Zip Code.
+        </h1>
+        {{/if}}
     </main>
 </div>
+{{#if location}}
 {{#section 'script'}}
 {{{leafletjs (singleleafletjs location)}}}
 {{/section}}
+{{/if}}
