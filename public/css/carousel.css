@@ -161,3 +161,8 @@ td.hiddenRow {
  .carousel-control-next-icon {
    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23007bff' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E") !important;
  }
+
+ div.album.py-5.bg-light{
+  /*026 Saint Petersburg*/
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
