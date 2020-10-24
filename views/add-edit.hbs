@@ -1,60 +1,62 @@
 {{>navbar}}
 
 <main role="main">
-    {{#if location.id}}
-    <h1 style="margin-top: 20px;">Edit Zip Code</h1>
-    {{else}}
-    <h1 style="margin-top: 20px;">Add Zip Code</h1>
-    {{/if}}
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <h5 class="card-header">
-                    <div class="row">
-                        <div class="col-6">
-                            Zip Code
-                        </div>
-                        <div class="col-6">
-                            Alias
-                        </div>
-                    </div>
-                </h5>
-                <form action="/update" method="POST">
-                    <ul class="list-group list-group-flush">
-                        {{#each locations}}
-                        {{#if (isEditRow ../location.id this.id)}}
-                        {{>add-edit-row location=../location}}
-                        {{else}}
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-6">
-                                    {{this.zip_code}}
-                                </div>
-                                <div class="col-6">
-                                    {{this.alias}}
-                                </div>
+    <div class="container">
+        {{#if location.id}}
+        <h1 style="margin-top: 20px;">Edit Zip Code</h1>
+        {{else}}
+        <h1 style="margin-top: 20px;">Add Zip Code</h1>
+        {{/if}}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <h5 class="card-header">
+                        <div class="row">
+                            <div class="col-6">
+                                Zip Code
                             </div>
-                        </li>
-                        {{/if}}
-                        {{/each}}
-                        {{#unless location.id}}
-                        {{>add-edit-row location}}
-                        {{/unless}}
-                        <li class="list-group-item">
-                            <div class="row">
-                                <div class="col-6">
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </div>
-                                <div class="col-6">
-                                    <a href="/list" class="btn btn-secondary">Cancel</a>
-                                </div>
+                            <div class="col-6">
+                                Alias
                             </div>
-                        </li>
-                    </ul>
-                </form>
-                {{#if location.validationError}}
-                <p style="color: red; padding-left:20px;"><strong>{{location.validationError}}</strong></p>
-                {{/if}}
+                        </div>
+                    </h5>
+                    <form action="/update" method="POST">
+                        <ul class="list-group list-group-flush">
+                            {{#each locations}}
+                            {{#if (isEditRow ../location.id this.id)}}
+                            {{>add-edit-row location=../location}}
+                            {{else}}
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-6">
+                                        {{this.zip_code}}
+                                    </div>
+                                    <div class="col-6">
+                                        {{this.alias}}
+                                    </div>
+                                </div>
+                            </li>
+                            {{/if}}
+                            {{/each}}
+                            {{#unless location.id}}
+                            {{>add-edit-row location}}
+                            {{/unless}}
+                            <li class="list-group-item">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <button type="submit" class="btn btn-primary">Submit</button>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="/list" class="btn btn-secondary">Cancel</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </form>
+                    {{#if location.validationError}}
+                    <p style="color: red; padding-left:20px;"><strong>{{location.validationError}}</strong></p>
+                    {{/if}}
+                </div>
             </div>
         </div>
     </div>
