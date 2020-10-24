@@ -1,126 +1,129 @@
 {{>navbar}}
 <main role="main">
-    {{#if location}}
-    <h1 style="margin-top: 20px; text-align: right;">
-        {{#if location.alias}}
-        {{location.alias}}
-        {{else}}
-        {{location.default_city}}, {{location.state_abbr}} {{location.zip_code}}
-        {{/if}}
-    </h1>
-    <h3 class="pb-3 mb-4 font-italic border-bottom">
-        Local Covid-19 Information
-    </h3>
-    <div class="row featurette">
-        {{#if location.localCovidData}}
-        <div class="col-lg-4">
-            <p style="text-align: center;"><strong>
-                    Covid-19 Positives</strong>
-            </p>
-            {{{graphics location.localCovidData "positiveCt"}}}
-            <p>Source: <span style="font-weight: 500;"><em>The New York Times</em></span> via <a
-                    href="https://anypoint.mulesoft.com/exchange/portals/mulesoft-2778/5a0bd415-9488-4e33-88d6-ba31cbef5957/contact-tracing-exp-api/">COVID-19
-                    Data Tracking API</a></p>
-        </div>
-        {{else}}
-        <div class="col-lg-4" style="padding: 0 12px 24px 12px;">
-            <div class="carousel-container" style="background-color: lightblue; border-radius: 3px">
-                <p style="text-align: center;">No local Covid-19 data availabe</p>
+    <div class="container">
+        {{#if location}}
+        <h1 style="margin-top: 20px; text-align: right;">
+            {{#if location.alias}}
+            {{location.alias}}
+            {{else}}
+            {{location.default_city}}, {{location.state_abbr}} {{location.zip_code}}
+            {{/if}}
+        </h1>
+        <h3 class="pb-3 mb-4 font-italic border-bottom">
+            Local Covid-19 Information
+        </h3>
+        <div class="row featurette">
+            {{#if location.localCovidData}}
+            <div class="col-lg-4">
+                <p style="text-align: center;"><strong>
+                        Covid-19 Positives</strong>
+                </p>
+                {{{graphics location.localCovidData "positiveCt"}}}
+                <p>Source: <span style="font-weight: 500;"><em>The New York Times</em></span> via <a
+                        href="https://anypoint.mulesoft.com/exchange/portals/mulesoft-2778/5a0bd415-9488-4e33-88d6-ba31cbef5957/contact-tracing-exp-api/">COVID-19
+                        Data Tracking API</a></p>
             </div>
-        </div>
-        {{/if}}
-        {{#if location.localCovidData}}
-        <div class="col-lg-4">
-            <p style="text-align: center;"><strong>
-                    Covid-19 Deaths</strong>
-            </p>
-            {{{graphics location.localCovidData "deathCt"}}}
-            <p>Source: <span style="font-weight: 500;"><em>The New York Times</em></span> via <a
-                    href="https://anypoint.mulesoft.com/exchange/portals/mulesoft-2778/5a0bd415-9488-4e33-88d6-ba31cbef5957/contact-tracing-exp-api/">COVID-19
-                    Data Tracking API</a></p>
-        </div>
-        {{else}}
-        <div class="col-lg-4" style="padding: 0 12px 24px 12px;">
-            <div class="carousel-container" style=" background-color: lightblue; border-radius: 3px">
-                <p style="text-align: center;">No local Covid-19 data availabe</p>
-            </div>
-        </div>
-        {{/if}}
-        <div class="col-lg-4 ">
-            <div class="card mb-4 box-shadow">
-                <div id="map{{location.zip_code}}" class="card-img-top">
+            {{else}}
+            <div class="col-lg-4" style="padding: 0 12px 24px 12px;">
+                <div class="carousel-container" style="background-color: lightblue; border-radius: 3px">
+                    <p style="text-align: center;">No local Covid-19 data availabe</p>
                 </div>
-                <div class="card-body">
-                    <p>Source: <a href="https://developer.here.com/blog/finding-covid-19-testing-sites">HERE
-                            Geocoding and Search API</a></p>
-                    <p data-toggle="collapse" data-target="#divLocations">
-                        <i class="fa fa-fw fa-info-circle bootstrap-primary"
-                            aria-label="Covid-19 Testing Locations Information"></i>
-                        Covid-19 Testing Locations</p>
-                    <div class="accordian-body collapse" id="divLocations">
-                        <ul class="list-group list-group-flush">
-                            {{#each location.hereData}}
-                            <li class="list-group-item">
-                                <address>
-                                    {{this.markerText}}<br />
-                                    {{#if this.address.houseNumber}}
-                                    {{this.address.houseNumber}} {{this.address.street}}<br />
-                                    {{else}}
-                                    {{this.address.street}}<br />
-                                    {{/if}}
-                                    {{this.address.city}}, {{this.address.stateCode}}
-                                    {{this.address.postalCode}}<br />
-                                    <a href="tel:{{this.phone}}">{{this.formatPhone}}</a>
-                                </address>
-                            </li>
-                            {{/each}}
-                        </ul>
+            </div>
+            {{/if}}
+            {{#if location.localCovidData}}
+            <div class="col-lg-4">
+                <p style="text-align: center;"><strong>
+                        Covid-19 Deaths</strong>
+                </p>
+                {{{graphics location.localCovidData "deathCt"}}}
+                <p>Source: <span style="font-weight: 500;"><em>The New York Times</em></span> via <a
+                        href="https://anypoint.mulesoft.com/exchange/portals/mulesoft-2778/5a0bd415-9488-4e33-88d6-ba31cbef5957/contact-tracing-exp-api/">COVID-19
+                        Data Tracking API</a></p>
+            </div>
+            {{else}}
+            <div class="col-lg-4" style="padding: 0 12px 24px 12px;">
+                <div class="carousel-container" style=" background-color: lightblue; border-radius: 3px">
+                    <p style="text-align: center;">No local Covid-19 data availabe</p>
+                </div>
+            </div>
+            {{/if}}
+            <div class="col-lg-4 ">
+                <div class="card mb-4 box-shadow">
+                    <div id="map{{location.zip_code}}" class="card-img-top">
+                    </div>
+                    <div class="card-body">
+                        <p>Source: <a href="https://developer.here.com/blog/finding-covid-19-testing-sites">HERE
+                                Geocoding and Search API</a></p>
+                        <p data-toggle="collapse" data-target="#divLocations">
+                            <i class="fa fa-fw fa-info-circle bootstrap-primary"
+                                aria-label="Covid-19 Testing Locations Information"></i>
+                            Covid-19 Testing Locations</p>
+                        <div class="accordian-body collapse" id="divLocations">
+                            <ul class="list-group list-group-flush">
+                                {{#each location.hereData}}
+                                <li class="list-group-item">
+                                    <address>
+                                        {{this.markerText}}<br />
+                                        {{#if this.address.houseNumber}}
+                                        {{this.address.houseNumber}} {{this.address.street}}<br />
+                                        {{else}}
+                                        {{this.address.street}}<br />
+                                        {{/if}}
+                                        {{this.address.city}}, {{this.address.stateCode}}
+                                        {{this.address.postalCode}}<br />
+                                        <a href="tel:{{this.phone}}">{{this.formatPhone}}</a>
+                                    </address>
+                                </li>
+                                {{/each}}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <h3 class="pb-3 mb-4 font-italic border-bottom">
-        <div class="row">
-            <div class="col-md-6">
-                State Covid-19 Information
+        <h3 class="pb-3 mb-4 font-italic border-bottom">
+            <div class="row">
+                <div class="col-md-6">
+                    State Covid-19 Information
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-group list-group-horizontal" style="font-size: 16px; float:right">
+                        <li class="list-group-item"><a href={{location.statesInfo.covid19Site}}>Covid-19
+                                Site</a></li>
+                        <li class="list-group-item"><a href={{location.statesInfo.covid19SiteSecondary}}>Covid-19
+                                Secondary Site</a></li>
+                        {{{getTwitter2 location.statesInfo.twitter}}}
+                    </ul>
+                </div>
             </div>
-            <div class="col-md-6">
-                <ul class="list-group list-group-horizontal" style="font-size: 16px; float:right">
-                    <li class="list-group-item"><a href={{location.statesInfo.covid19Site}}>Covid-19
-                            Site</a></li>
-                    <li class="list-group-item"><a href={{location.statesInfo.covid19SiteSecondary}}>Covid-19
-                            Secondary Site</a></li>
-                    {{{getTwitter2 location.statesInfo.twitter}}}
-                </ul>
+        </h3>
+        <div class="row featurette">
+            <div class="col-lg-4">
+                {{{graphics data.series "positive"}}}
+                <p style="text-align: center;">Source: <a href="https://covidtracking.com/">The COVID
+                        Tracking
+                        Project</a></p>
+            </div>
+            <div class="col-lg-4">
+                {{{graphics data.series "death"}}}
+                <p style="text-align: center;">Source: <a href="https://covidtracking.com/">The COVID
+                        Tracking
+                        Project</a></p>
+            </div>
+            <div class="col-lg-4">
+                <h4>Current {{data.state}} Numbers<span style="float: right; font-size: .8rem">Last update:
+                        {{data.lastUpdateET}}</span>
+                </h4>
+                {{>table data=data}}
             </div>
         </div>
-    </h3>
-    <div class="row featurette">
-        <div class="col-lg-4">
-            {{{graphics data.series "positive"}}}
-            <p style="text-align: center;">Source: <a href="https://covidtracking.com/">The COVID
-                    Tracking
-                    Project</a></p>
-        </div>
-        <div class="col-lg-4">
-            {{{graphics data.series "death"}}}
-            <p style="text-align: center;">Source: <a href="https://covidtracking.com/">The COVID
-                    Tracking
-                    Project</a></p>
-        </div>
-        <div class="col-lg-4">
-            <h4>Current {{data.state}} Numbers<span style="float: right; font-size: .8rem">Last update:
-                    {{data.lastUpdateET}}</span>
-            </h4>
-            {{>table data=data}}
-        </div>
+        {{else}}
+        <h1 style="margin-top: 20px; text-align: right;">
+            Invalid Zip Code.
+        </h1>
+        {{/if}}
+
     </div>
-    {{else}}
-    <h1 style="margin-top: 20px; text-align: right;">
-        Invalid Zip Code.
-    </h1>
-    {{/if}}
 </main>
 {{#if location}}
 {{#section 'script'}}

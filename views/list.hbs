@@ -1,54 +1,55 @@
 {{>navbar}}
-
 <main role="main">
-    <h1 style="margin-top: 20px;">Zip Codes</h1>
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="card">
-                <h5 class="card-header">
-                    <div class="row">
-                        <div class="col-4">
-                            Zip Code
-                        </div>
-                        <div class="col-4">
-                            Alias
-                        </div>
-                        <div class="col-4">
-                            Action
-                        </div>
-                    </div>
-                </h5>
-                <ul class="list-group list-group-flush">
-                    {{#each locations}}
-                    <li class="list-group-item">
+    <div class="container">
+        <h1 style="margin-top: 20px;">Zip Codes</h1>
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <h5 class="card-header">
                         <div class="row">
                             <div class="col-4">
-                                {{this.zip_code}}
+                                Zip Code
                             </div>
                             <div class="col-4">
-                                {{this.alias}}
+                                Alias
                             </div>
-                            <div class="col-4" style="padding: 0px;">
-                                <a href="/edit/{{this.id}}" class="btn btn-secondary" title="Edit"><i
-                                        class="fa fa-fw fa-edit" aria-label="edit zip code"></i></a>
-                                <a href="/delete/{{this.id}}" class="btn btn-danger" title="Delete"><i
-                                        class="fa fa-fw fa-trash" aria-label="edit zip code"></i></a>
+                            <div class="col-4">
+                                Action
                             </div>
                         </div>
-                    </li>
-                    {{/each}}
-                    <li class="list-group-item">
-                        <div class="row">
-                            <div class="col-8">
-                                <a href="/add" class="btn btn-primary"><i class="fa fa-fw fa-plus"
-                                        aria-label="add zip code"></i> Zip Code</a>
+                    </h5>
+                    <ul class="list-group list-group-flush">
+                        {{#each locations}}
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-4">
+                                    {{this.zip_code}}
+                                </div>
+                                <div class="col-4">
+                                    {{this.alias}}
+                                </div>
+                                <div class="col-4" style="padding: 0px;">
+                                    <a href="/edit/{{this.id}}" class="btn btn-secondary" title="Edit"><i
+                                            class="fa fa-fw fa-edit" aria-label="edit zip code"></i></a>
+                                    <a href="/delete/{{this.id}}" class="btn btn-danger" title="Delete"><i
+                                            class="fa fa-fw fa-trash" aria-label="edit zip code"></i></a>
+                                </div>
                             </div>
-                            <div class="col-4" style="padding: 0px;">
-                                <a href="/summary" class="btn btn-success">Get Data</a>
+                        </li>
+                        {{/each}}
+                        <li class="list-group-item">
+                            <div class="row">
+                                <div class="col-8">
+                                    <a href="/add" class="btn btn-primary"><i class="fa fa-fw fa-plus"
+                                            aria-label="add zip code"></i> Zip Code</a>
+                                </div>
+                                <div class="col-4" style="padding: 0px;">
+                                    <a href="/summary" class="btn btn-success">Get Data</a>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
