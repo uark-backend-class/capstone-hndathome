@@ -2,59 +2,71 @@
     stroke: #706f6f;
     stroke-width: 0.5;
     shape-rendering: crispEdges;
-}
-
-/* axis contour */
-.axis path {
+  }
+  
+  /* axis contour */
+  .axis path {
     stroke: #706f6f;
     stroke-width: 0.7;
     shape-rendering: crispEdges;
-}
-
-/* axis text */
-.axis text {
+  }
+  
+  /* axis text */
+  .axis text {
     fill: #2b2929;
     font-family: Georgia;
     font-size: 120%;
-}
-
-/* LINE CHART */
-path.line-0 {
+  }
+  
+  /* LINE CHART */
+  path.line-0 {
     fill: none;
     stroke: #1f77b4;
     stroke-width: 2;
-}
-
-path.line-1 {
+  }
+  
+  path.line-1 {
     fill: none;
-    stroke:#ff7f0e;
+    stroke: #ff7f0e;
     stroke-width: 2;
-}
-
-path.line-2 {
+  }
+  
+  path.line-2 {
     fill: none;
     stroke: #2ca02c;
     stroke-width: 2;
-}
-
-path.line-3 {
+  }
+  
+  path.line-3 {
     fill: none;
     stroke: #d62728;
     stroke-width: 2;
-}
-
-path.line-4 {
+  }
+  
+  path.line-4 {
     fill: none;
     stroke: #9467bd;
     stroke-width: 2;
-}
-
-.serie_label {
+  }
+  
+  .serie_label {
     fill: #2b2929;
     font-family: Georgia;
     font-size: 80%;
-}
-
-.leaflet-popup-content{
+  }
+  
+  .leaflet-popup-content {
     white-space: nowrap;
-}
+  }
+  
+  .svg-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .svg-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }

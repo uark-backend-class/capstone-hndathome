@@ -22,8 +22,10 @@
             <div class="col-lg-4">
                 <div class="card mb-4 box-shadow">
                     <div class="card-header"><strong>Covid-19 Positives</strong></div>
-                    <div class="card-img-bottom">
-                        {{{graphics location.localCovidData "positiveCt"}}}
+                    <div class="card-img-bottom" style="height: 415px;">
+                        <div class="svg-container">
+                            {{{graphics location.localCovidData "positiveCt"}}}
+                        </div>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Source: <strong><em>The New York Times</em></strong> via <a
@@ -35,8 +37,10 @@
             <div class="col-lg-4">
                 <div class="card mb-4 box-shadow">
                     <div class="card-header"><strong>Covid-19 Deaths</strong></div>
-                    <div class="card-img-bottom">
-                        {{{graphics location.localCovidData "deathCt"}}}
+                    <div class="card-img-bottom" style="height: 415px;">
+                        <div class="svg-container">
+                            {{{graphics location.localCovidData "deathCt"}}}
+                        </div>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Source: <strong><em>The New York Times</em></strong> via <a
@@ -129,8 +133,10 @@
             <div class="col-lg-4">
                 <div class="card mb-4 box-shadow">
                     <div class="card-header"><strong>{{data.state}} Covid-19 Positives</strong></div>
-                    <div class="card-img-bottom">
-                        {{{graphics data.series "positive"}}}
+                    <div class="card-img-bottom" style="height: 415px;">
+                        <div class="svg-container">
+                            {{{graphics data.series "positive"}}}
+                        </div>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Source: <a href="https://covidtracking.com/">The COVID Tracking
@@ -141,8 +147,10 @@
             <div class="col-lg-4">
                 <div class="card mb-4 box-shadow">
                     <div class="card-header"><strong>{{data.state}} Covid-19 Deaths</strong></div>
-                    <div class="card-img-bottom">
-                        {{{graphics data.series "death"}}}
+                    <div class="card-img-bottom" style="height: 415px;">
+                        <div class="svg-container">
+                            {{{graphics data.series "death"}}}
+                        </div>
                     </div>
                     <div class="card-footer">
                         <small class="text-muted">Source: <a href="https://covidtracking.com/">The COVID Tracking
