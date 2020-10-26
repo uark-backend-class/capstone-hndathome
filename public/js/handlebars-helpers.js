@@ -38,17 +38,17 @@ module.exports = {
     getTwitter: function (str) {
         let twitterLink = "";
         if (str.startsWith('@')) {
-            twitterLink = `<li><a class="covid19-links"
+            twitterLink = `<li><a 
             href=https://twitter.com/${str.slice(1)}>
             <i class="fa fa-fw fa-twitter" aria-label="go to twitter"></i></a></li>`
         }
         return twitterLink;
     },
-    getTwitter2: function (str) {
+    getTwitter2: function (str, state) {
         let twitterLink = "";
         if (str.startsWith('@')) {
             twitterLink = `<li class="list-group-item"><a 
-            href=https://twitter.com/${str.slice(1)}>
+            href=https://twitter.com/${str.slice(1)}>${state} Department of Health
             <i class="fa fa-fw fa-twitter" aria-label="go to twitter"></i></a></li>`
         }
         return twitterLink;

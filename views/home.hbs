@@ -11,34 +11,44 @@
         <p><a class="btn btn-primary btn-lg" href="/list" role="button">Enter zip codes &raquo;</a></p>
       </div>
     </div>
-    <hr class="featurette-divider">
-    </hr>
+    <h3 class="pb-3 mb-4 font-italic border-bottom">
+      US Covid-19 Data
+    </h3>
     <div class="row featurette">
       <div class="col-lg-4">
-        <div class="row">
-          <div class="col-12">
-            <h2>Current US Numbers<span style="float: right; font-size: .8rem">Last update:
-                {{data.lastUpdateET}}</span>
-            </h2>
+        <div class="card mb-4 box-shadow">
+          <div class="card-header"><strong>US Covid-19 Positives</strong></div>
+          <div class="card-img-bottom">
+            {{{graphics data.series "positive"}}}
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Source: <a href="https://covidtracking.com/">The COVID Tracking
+                Project</a></small>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card mb-4 box-shadow">
+          <div class="card-header"><strong>US Covid-19 Positives</strong></div>
+          <div class="card-img-bottom">
+            {{{graphics data.series "death"}}}
+          </div>
+          <div class="card-footer">
+            <small class="text-muted">Source: <a href="https://covidtracking.com/">The COVID Tracking
+                Project</a></small>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card mb-4 box-shadow">
+          <div class="card-header"><strong>Current US Numbers</strong>
+            <p>Click on the "i" icon or table row to view the Parameter's definition.</p>
+          </div>
+          <div class="table-responsive">
             {{>table data=data}}
           </div>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="row">
-          <div class="col-12">
-            {{{graphics data.series "positive"}}}
-            <p style="text-align: center;">Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a>
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-4">
-        <div class="row">
-          <div class="col-12">
-            {{{graphics data.series "death"}}}
-            <p style="text-align: center;">Source: <a href="https://covidtracking.com/">The COVID Tracking Project</a>
-            </p>
+          <div class="card-footer">
+            <small class="text-muted">Last update: {{data.lastUpdateET}}</small>
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@
   margin-bottom: 0;
   background-color: #fff;
 }
+
 @media (min-width: 768px) {
   .jumbotron {
     padding-top: calc(var(--jumbotron-padding-y) * 2);
@@ -36,19 +37,28 @@ footer p {
   margin-bottom: .25rem;
 }
 
-.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
 
-body{
+body {
   margin: 0;
 }
 
-.zipcode-form{
-padding-top: 1.5rem;
+.zipcode-form {
+  padding-top: 1.5rem;
 }
 
-.card-body {
+.summary-card-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+} 
+
+.summary-card-footer {
   background-color: aliceblue;
-}
+} 
 
 .loading span {
   color: #00b300;
@@ -71,9 +81,11 @@ padding-top: 1.5rem;
   0% {
     opacity: .2;
   }
+
   20% {
     opacity: 1;
   }
+
   100% {
     opacity: .2;
   }
@@ -81,41 +93,44 @@ padding-top: 1.5rem;
 
 @media (prefers-reduced-motion: reduce) {
   .loading span {
-    animation: none; /* or define an alternate animation */
+    animation: none;
   }
 }
 
-.addclickspin{
+.addclickspin {
   color: #00b300;
 }
 
-.addclickdefault{
+.addclickdefault {
   color: unset;
 }
 
 .leaflet-container {
-  height: 400px;
+  height: 100%;
   width: 100%;
 }
 
-/*.my-zipcodes-body{
-<a href="https://www.vecteezy.com/free-vector/amoeba">Amoeba Vectors by Vecteezy</a>
-  background-image: url('../assets/mask-4964590_1280.png');
-  background-position: center; 
-  background-size: cover;
-}
-
-.attribution{
-  position:absolute;
-  bottom:0;
-  right:0;
-  font-size:0.5em
-}*/
-
-.bootstrap-primary{
-  color: #007bff; 
+.bootstrap-primary {
+  color: #007bff;
 }
 
 .VictoryContainer {
   padding-left: 12px;
+}
+
+/*.my-index-body{
+  cloudy knoxville
+  background-image: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);*/
+  /*st petersburg */
+  /*background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);*/
+  /*snow again */
+  /*background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+}*/
+
+.my-index-body, .my-zipcode-details-body, div.album.py-5.bg-light{
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+}
+
+caption {
+  text-align: center;
 }
