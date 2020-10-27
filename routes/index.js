@@ -5,6 +5,7 @@ const summaryController = require('../controllers/summary.controller');
 const detailsController = require('../controllers/details.controller');
 const passport = require('passport');
 const isAuthenticated = require('../middleware/is-authenticated');
+const redirect = require('../middleware/redirect');
 
 router.get('/login', passport.authenticate('google', { scope: ["profile", "email"] }));
 router.get('/login/callback', passport.authenticate('google'), (req, res) => {
@@ -12,7 +13,9 @@ router.get('/login/callback', passport.authenticate('google'), (req, res) => {
     delete req.session.returnTo;
 });
 
+
 router.get('/favicon.ico', function (req, res) { res.sendStatus(204); });
+router.use(redirect);
 router.get('/', homeController.render);
 router.use(isAuthenticated);
 router.get('/list', locationController.getAll);
