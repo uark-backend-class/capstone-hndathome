@@ -13,6 +13,15 @@ router.get('/login/callback', passport.authenticate('google'), (req, res) => {
 });
 
 router.get('/favicon.ico', function (req, res) { res.sendStatus(204); });
+router.use(function (req, res, next) {
+    if (req.secure) {
+        // request was via https, so do no special handling
+        next();
+    } else {
+        // request was via http, so redirect to https
+        res.redirect('https://' + req.headers.host + req.url);
+    }
+});
 router.get('/', homeController.render);
 router.use(isAuthenticated);
 router.get('/list', locationController.getAll);
