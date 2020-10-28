@@ -16,11 +16,20 @@
     </section>
     <div class="album py-5 bg-light">
         <div class="container">
+            {{#if locations}}
             <div class="row">
                 {{#each locations}}
                 {{>summary-card location=this}}
                 {{/each}}
             </div>
+            {{else}}
+            <div class="row">
+                <div class="col-12" style="padding: 0px;">
+                    <p style="text-align: center;"><a class="btn btn-primary btn-lg" href="/list" role="button">Enter
+                            zip codes &raquo;</a></p>
+                </div>
+            </div>
+            {{/if}}
         </div>
     </div>
     <section class="jumbotron text-center">
