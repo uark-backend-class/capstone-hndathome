@@ -3,5 +3,5 @@
 </h1>
 
 <p>
-This Express web application allows you to enter multiple zip codes and returns COVID-19 statistics, links to state COVID-19 websites, and if available where to get COVID-19 testing. Find out COVID-19 facts where it matters to you, whether for travel or for family and friends living across the United States.
+This Express web application allows a user to monitor Covid-19 across the United States with zip codes. Authentication is implemented with Passport using Google OAuth 2.0 Strategy. Express-handlebars is the templating engine. JSDOM and D3 are used for data presentation. Leaflet is used for mapping. Data is sourced from the COVID Tracking Project, The New York Times via COVID-19 Data Tracking API, and Here Geocoding and Search API. A special thanks to SmartyStreets, who granted me additional free API calls for zip code validation.
 </p>
